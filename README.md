@@ -1,2 +1,1 @@
-# colegio-mar-a-inmaculada
-# colegio-mar-a-inmaculada
+# Colegio María Inmaculada Los Ángeles
