@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="María Inmaculada Los Ángeles" />
+    <meta name="keywords"
+        content="María Inmaculada Los Ángeles, colegio, educación, educación infantil, educación primaria, educación secundaria" />
+    <meta name="author" content="María Inmaculada Los Ángeles" />
+    <link rel="icon" href="/logo.png" type="image/png">
+    <title>María Inmaculada Los Ángeles</title>
+</head>
+
+<body>
+    <!-- Felicidades, sabes usar click derecho. Adelante sigue inspeccionando código... -->
+    <div id="root"></div>
+
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden;
+        }
+
+        #root {
+            height: 100%;
+        }
+    </style>
+    <script>
+        // Ups descubriste mi secreto D:
+        document.addEventListener("DOMContentLoaded", function () {
+            const secretPhrase = "ad astra per aspera";
+            let buffer = "";
+
+            window.addEventListener("keydown", function (e) {
+                if (["INPUT", "TEXTAREA"].includes(document.activeElement.tagName)) return;
+
+                if (e.key.length === 1) {
+                    buffer += e.key.toLowerCase();
+                } else if (e.key === "Backspace") {
+                    buffer = buffer.slice(0, -1);
+                }
+
+                if (buffer.length > secretPhrase.length) {
+                    buffer = buffer.slice(-secretPhrase.length);
+                }
+
+                if (buffer === secretPhrase) {
+                    mostrarLogo();
+                    buffer = "";
+                }
+            });
+
+            function mostrarLogo() {
+                const logo = document.createElement("img");
+                logo.src = "https://i.pinimg.com/736x/c7/35/91/c7359122025d6dd8d31247f2baf18288.jpg";
+
+                logo.style.position = "fixed";
+                logo.style.top = "50%";
+                logo.style.left = "50%";
+                logo.style.transform = "translate(-50%, -50%) scale(1)";
+                logo.style.zIndex = 9999;
+                logo.style.maxWidth = "320px";
+                logo.style.opacity = "0";
+                logo.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+                logo.style.filter = "drop-shadow(0 20px 40px rgba(0,0,0,0.5))";
+
+                document.body.appendChild(logo);
+
+                requestAnimationFrame(() => {
+                    logo.style.opacity = "1";
+                    logo.style.transform = "translate(-50%, -50%) scale(1.05)";
+                });
+
+                setTimeout(() => {
+                    logo.style.opacity = "0";
+                    logo.style.transform = "translate(-50%, -60%) scale(1.15)";
+                }, 4500);
+
+                setTimeout(() => {
+                    logo.remove();
+                }, 5200);
+            }
+        });
+    </script>
+
+    <script type="module" src="/src/index.jsx"></script>
+</body>
+
+</html>
