@@ -179,7 +179,7 @@ aprendizaje académico, habilidades prácticas y desarrollo personal.`}
 
             <div style={{ marginTop: '1.5rem' }}>
               <a
-                href="/planestudio/planestudio.xlsx"
+                href={`${import.meta.env.BASE_URL}docs/planestudio/planestudio.xlsx`}
                 download
                 className="btn-primary"
                 style={{ display: 'inline-block', textDecoration: 'none', padding: '0.8rem 1.5rem' }}

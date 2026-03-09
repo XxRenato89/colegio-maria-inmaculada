@@ -52,7 +52,7 @@ const MaterialesDynamic = () => {
 
                 <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
                     <a
-                        href={data.pdf}
+                        href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${data.pdf}`}
                         download
                         className="btn-primary"
                         style={{ display: 'inline-block', textDecoration: 'none', padding: '0.8rem 1.5rem' }}

@@ -62,7 +62,7 @@ const RegulacionesGenerales = () => {
         </p>
         <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
           <a
-            href="/reglamentos/reglamentos.pdf"
+            href={`${import.meta.env.BASE_URL}docs/reglamentos/reglamentos.pdf`}
             download
             className="btn-primary"
             style={{ display: 'inline-block', textDecoration: 'none', padding: '0.8rem 1.5rem' }}

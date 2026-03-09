@@ -4,7 +4,7 @@ export const materialesData = {
     primero: {
         title: "Materiales de 1° Básico",
         subtitle: "Lista de útiles escolares 2026 para 1° básico",
-        pdf: "/materiales/1basico.pdf",
+        pdf: "/docs/materiales/1basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general (quedan en la sala de clases)",
@@ -75,7 +75,7 @@ export const materialesData = {
     segundo: {
         title: "Materiales de 2° Básico",
         subtitle: "Lista de útiles escolares 2026 para 2° básico",
-        pdf: "/materiales/2basico.pdf",
+        pdf: "/docs/materiales/2basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general (quedan en la sala de clases)",
@@ -167,7 +167,7 @@ export const materialesData = {
     tercero: {
         title: "Materiales de 3° Básico",
         subtitle: "Lista de útiles escolares 2026 para 3° básico",
-        pdf: "/materiales/3basico.pdf",
+        pdf: "/docs/materiales/3basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -227,7 +227,7 @@ export const materialesData = {
     cuarto: {
         title: "Materiales de 4° Básico",
         subtitle: "Lista de útiles escolares 2026 para 4° básico",
-        pdf: "/materiales/4basico.pdf",
+        pdf: "/docs/materiales/4basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -286,7 +286,7 @@ export const materialesData = {
     quinto: {
         title: "Materiales de 5° Básico",
         subtitle: "Lista de útiles escolares 2026 para 5° básico",
-        pdf: "/materiales/5basico.pdf",
+        pdf: "/docs/materiales/5basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -345,7 +345,7 @@ export const materialesData = {
     sexto: {
         title: "Materiales de 6° Básico",
         subtitle: "Lista de útiles escolares 2026 para 6° básico",
-        pdf: "/materiales/6basico.pdf",
+        pdf: "/docs/materiales/6basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -405,7 +405,7 @@ export const materialesData = {
     septimo: {
         title: "Materiales de 7° Básico",
         subtitle: "Lista de útiles escolares 2026 para 7° básico",
-        pdf: "/materiales/7basico.pdf",
+        pdf: "/docs/materiales/7basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -465,7 +465,7 @@ export const materialesData = {
     octavo: {
         title: "Materiales de 8° Básico",
         subtitle: "Lista de útiles escolares 2026 para 8° básico",
-        pdf: "/materiales/8basico.pdf",
+        pdf: "/docs/materiales/8basico.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -525,7 +525,7 @@ export const materialesData = {
     media: {
         title: "Materiales de Enseñanza Media",
         subtitle: "Lista de útiles escolares 2026 (I°, II°, III° y IV° medio)",
-        pdf: "/materiales/media.pdf",
+        pdf: "/docs/materiales/media.pdf",
         sections: [
             {
                 heading: "Materiales de uso general",
@@ -580,7 +580,7 @@ export const materialesData = {
     t: {
         title: "Materiales de Pre-kínder y Kínder",
         subtitle: "Listado oficial de útiles y materiales para Nivel Transición",
-        pdf: "/materiales/nt1-nt2.pdf",
+        pdf: "/docs/materiales/nt1-nt2.pdf",
         sections: [
             {
                 heading: "Lista de Materiales",
