@@ -214,7 +214,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura.",
             "Uniforme escolar: buzo.",
             "Todos los materiales deben estar marcados con el nombre del alumno.",
             "Cualquier material adicional se solicitará en forma oportuna durante el año escolar por cada profesor de asignatura.",
@@ -274,7 +274,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura.",
             "Uniforme escolar: buzo.",
             "Todos los materiales deben estar marcados con el nombre del alumno.",
             "Cualquier material adicional se solicitará oportunamente durante el año escolar.",
@@ -333,7 +333,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura a la cual pertenece.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura a la cual pertenece.",
             "Cada asignatura debe tener su cuaderno propio y de uso exclusivo para ella (puede reutilizar cuadernos del año anterior si la cantidad de hojas así lo permite).",
             "Se exige el uso del buzo del colegio/uniforme escolar según reglamento interno del establecimiento (marcado con nombre y curso del estudiante).",
             "Todos los materiales deben estar adecuadamente marcados con el nombre del alumno.",
@@ -393,7 +393,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura a la cual pertenece.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura a la cual pertenece.",
             "Cada asignatura debe tener su cuaderno propio y de uso exclusivo para ella (puede reutilizar cuadernos del año anterior si la cantidad de hojas así lo permiten).",
             "Se exige el uso del buzo del colegio/uniforme escolar según reglamento interno del establecimiento (marcado con nombre y curso del estudiante).",
             "Todos los materiales deben estar adecuadamente marcados con el nombre del alumno.",
@@ -453,7 +453,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura a la cual pertenece.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura a la cual pertenece.",
             "Cada asignatura debe tener su cuaderno propio y de uso exclusivo para ella (puede reutilizar cuadernos del año anterior si la cantidad de hojas así lo permiten).",
             "Se exige el uso del buzo del colegio/uniforme escolar según reglamento interno de nuestro establecimiento (marcado con el nombre y curso del estudiante).",
             "Todos los materiales deben estar adecuadamente marcados con el nombre del alumno.",
@@ -513,7 +513,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura a la cual pertenece.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura a la cual pertenece.",
             "Cada asignatura debe tener su cuaderno propio y de uso exclusivo para ella (puede reutilizar cuadernos del año anterior si la cantidad de hojas así lo permiten).",
             "Se exige el uso del buzo del colegio/uniforme escolar según reglamento interno del establecimiento (marcado con el nombre y curso del estudiante).",
             "Todos los materiales deben estar adecuadamente marcados con el nombre del alumno.",
@@ -567,7 +567,7 @@ export const materialesData = {
             }
         ],
         importante: [
-            "Cada cuaderno debe venir con nombre completo del estudiante and la asignatura a la cual pertenece.",
+            "Cada cuaderno debe venir con nombre completo del estudiante y la asignatura a la cual pertenece.",
             "Cada asignatura debe tener su cuaderno propio y de uso exclusivo para ella.",
             "Se exige el uso del buzo del colegio/uniforme escolar según reglamento interno de nuestro establecimiento.",
             "Todos los materiales deben estar adecuadamente marcados con el nombre del alumno.",

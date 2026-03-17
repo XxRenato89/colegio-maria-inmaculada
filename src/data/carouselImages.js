@@ -22,18 +22,18 @@ export const carouselImages = [
     buttonPath: "/postulaciones"
   },
   {
-    image: img2,
-    title: "Bienvenidos al Colegio María Inmaculada Los Ángeles",
-    subtitle: "Formando personas íntegras con valores cristianos",
-    buttonLabel: "Postulaciones Abiertas",
-    buttonPath: "/postulaciones"
-  },
-  {
     image: img3,
     title: "También tenemos Transporte Escolar",
     subtitle: "Seguridad y comodidad para nuestros estudiantes",
     buttonLabel: "Más Información",
     buttonPath: "/transporte"
+  },
+  {
+    image: img2,
+    title: "Bienvenidos al Colegio María Inmaculada Los Ángeles",
+    subtitle: "Formando personas íntegras con valores cristianos",
+    buttonLabel: "Postulaciones Abiertas",
+    buttonPath: "/postulaciones"
   },
   {
     image: img4,

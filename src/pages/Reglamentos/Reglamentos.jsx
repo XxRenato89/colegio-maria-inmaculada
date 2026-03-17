@@ -1,14 +1,18 @@
-// src/pages/Reglamentos.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
+import { FaScroll } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 
-import riceImg from '../../images/reglamentos/RICE.webp';
-import leyteaImg from '../../images/reglamentos/LeyTEA.webp';
-import peiImg from '../../images/reglamentos/PEI.webp';
+import riceImg from "../../images/reglamentos/RICE.webp";
+import leyteaImg from "../../images/reglamentos/LeyTEA.webp";
+import peiImg from "../../images/reglamentos/PEI.webp";
 
-import apoderadosImg from '../../images/reglamentos/Apoderados.webp';
-import vestimentaImg from '../../images/reglamentos/vestimenta.webp';
-import pdiImg from '../../images/reglamentos/PDI.webp';
+import apoderadosImg from "../../images/reglamentos/Apoderados.webp";
+import vestimentaImg from "../../images/reglamentos/vestimenta.webp";
+import pdiImg from "../../images/reglamentos/PDI.webp";
+
+import PageLayout from "../../components/PageLayout";
+import Section from "../../components/Section";
+import Card from "../../components/Card";
+import SectionHero from "../../components/SectionHero";
 
 const Reglamentos = () => {
   const navigate = useNavigate();
@@ -18,114 +22,70 @@ const Reglamentos = () => {
       titulo: "RICE",
       descripcion: "Reglamento Interno de Convivencia Escolar",
       imagen: riceImg,
-      path: "/rice"
+      path: "/rice",
     },
     {
       titulo: "PEI",
       descripcion: "Proyecto Educativo Institucional",
       imagen: peiImg,
-      path: "/pei"
+      path: "/pei",
     },
     {
       titulo: "Reglamento de Evaluación",
       descripcion: "Normativa de promoción y evaluación académica",
-      imagen: apoderadosImg,   // imagen Apoderados aquí
-      path: "/reglamento-evaluacion"
+      imagen: apoderadosImg,
+      path: "/reglamento-evaluacion",
     },
     {
       titulo: "Ley TEA",
       descripcion: "Marco legal para Trastornos del Espectro Autista",
       imagen: leyteaImg,
-      path: "/ley-tea"
+      path: "/ley-tea",
     },
     {
       titulo: "Reglamento de Vestimenta",
       descripcion: "Normas sobre uniforme y presentación personal",
-      imagen: vestimentaImg,   // imagen Vestimenta
-      path: "/reglamento-vestimenta"
+      imagen: vestimentaImg,
+      path: "/reglamento-vestimenta",
     },
     {
-      titulo: "Plan de Seguridad Integral",
-      descripcion: "Participación y responsabilidades de apoderados",
-      imagen: pdiImg,          // imagen PDI aquí
-      path: "/plan-seguridad"
+      titulo: "Seguridad Integral",
+      descripcion: "Plan de seguridad y responsabilidades",
+      imagen: pdiImg,
+      path: "/plan-seguridad",
     },
   ];
 
   return (
-    <div style={{
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      color: '#333'
-    }}>
+    <PageLayout title="Reglamentos">
+      {/* HERO */}
+      <SectionHero
+        pill={
+          <span className="flex items-center gap-2">
+            <FaScroll /> Normativas
+          </span>
+        }
+        title="Reglamentos del Colegio"
+        subtitle="Conoce las normas y proyectos que guían nuestra convivencia y excelencia educativa."
+      />
 
-      <section style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <h1 style={{ color: '#181760', fontSize: '2.2rem', marginBottom: '0.5rem' }}>
-          Reglamentos del Colegio
-        </h1>
-        <p style={{ fontSize: '1.1rem', color: '#555' }}>
-          Conoce las normas que guían nuestra comunidad educativa
-        </p>
-      </section>
-
-      <section style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 1rem' }}>
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '2rem'
-        }}>
+      {/* GRID DE REGLAMENTOS */}
+      <Section spacing="py-12">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4">
           {reglamentos.map((reglamento, index) => (
-            <div
+            <Card
               key={index}
-              style={{
-                position: 'relative',
-                borderRadius: '10px',
-                overflow: 'hidden',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                cursor: 'pointer',
-                height: '300px'
-              }}
+              variant="image-overlay"
+              title={reglamento.titulo}
+              subtitle={reglamento.descripcion}
+              image={reglamento.imagen}
+              className="h-[300px]"
               onClick={() => navigate(reglamento.path)}
-            >
-              <img
-                src={reglamento.imagen}
-                alt={reglamento.titulo}
-                style={{
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover',
-                  position: 'absolute',
-                  top: 0,
-                  left: 0
-                }}
-              />
-
-              <div style={{
-                position: 'absolute',
-                inset: 0,
-                backgroundColor: 'rgba(24, 23, 96, 0.45)',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                alignItems: 'center',
-                padding: '1rem',
-                textAlign: 'center',
-                color: 'white'
-              }}>
-                <h3 style={{ fontSize: '1.3rem', marginBottom: '0.5rem' }}>
-                  {reglamento.titulo}
-                </h3>
-                <p style={{ fontSize: '0.9rem', marginBottom: '1rem', maxWidth: '90%' }}>
-                  {reglamento.descripcion}
-                </p>
-              </div>
-            </div>
+            />
           ))}
         </div>
-      </section>
-    </div>
+      </Section>
+    </PageLayout>
   );
 };
 

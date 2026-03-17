@@ -1,101 +1,113 @@
-// src/pages/MaterialesDynamic.jsx
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
-import CTA from '../components/CTA';
-import { materialesData } from '../data/MaterialesData';
-import '../App.css';
+import { FaSchool, FaFilePdf, FaTriangleExclamation } from "react-icons/fa6";
+import { useParams, useNavigate } from "react-router-dom";
+import PageLayout from "../components/PageLayout";
+import Section from "../components/Section";
+import Card from "../components/Card";
+import SectionHero from "../components/SectionHero";
+import CTA from "../components/CTA";
+import BotonContacto from "../components/BotonContacto";
+import { materialesData } from "../data/MaterialesData";
+import "../App.css";
 
 const MaterialesDynamic = () => {
-    const { curso } = useParams();
-    const navigate = useNavigate();
-    const data = materialesData[curso.toLowerCase()];
+  const { curso } = useParams();
+  const navigate = useNavigate();
+  const data = materialesData[curso.toLowerCase()];
 
-    if (!data) {
-        return (
-            <div style={{ padding: '2rem', textAlign: 'center' }}>
-                <h1>Página no encontrada</h1>
-                <button className="btn-primary" onClick={() => navigate('/materiales')}>
-                    Volver a Materiales
-                </button>
-            </div>
-        );
-    }
-
-    const sectionCardStyle = {
-        maxWidth: '900px',
-        margin: '0 auto 1.5rem',
-        backgroundColor: '#f9f9f9',
-        padding: '2rem',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-    };
-
-    const listStyle = {
-        paddingLeft: '1.5rem',
-        color: '#444',
-        lineHeight: '1.7',
-        margin: 0
-    };
-
+  if (!data) {
     return (
-        <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', padding: '2rem', fontFamily: 'Arial, sans-serif', color: '#333' }}>
-            <PageHero
-                title={data.title}
-                subtitle={data.subtitle}
-            />
-
-            <section style={sectionCardStyle}>
-                <h2 style={{ color: '#181760', marginBottom: '1rem', textAlign: 'center' }}>
-                    Lista de Útiles
-                </h2>
-
-                <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-                    <a
-                        href={`${import.meta.env.BASE_URL.replace(/\/$/, '')}${data.pdf}`}
-                        download
-                        className="btn-primary"
-                        style={{ display: 'inline-block', textDecoration: 'none', padding: '0.8rem 1.5rem' }}
-                    >
-                        📄 Descargar lista de útiles (PDF)
-                    </a>
-                </div>
-
-                {data.sections.map((section, sIdx) => (
-                    <React.Fragment key={sIdx}>
-                        <h3 style={{ color: '#181760', marginBottom: '0.75rem' }}>
-                            {section.heading}
-                        </h3>
-                        <ul style={{ ...listStyle, marginBottom: '1.5rem' }}>
-                            {section.items.map((item, iIdx) => (
-                                <li key={iIdx} style={{ marginBottom: '0.6rem' }}>{item}</li>
-                            ))}
-                        </ul>
-                    </React.Fragment>
-                ))}
-            </section>
-
-            <section style={{ ...sectionCardStyle, backgroundColor: '#fffbe6', border: '1px solid #f3e7a5' }}>
-                <h2 style={{ color: '#181760', marginBottom: '1rem', textAlign: 'center' }}>
-                    Importante
-                </h2>
-                <ul style={listStyle}>
-                    {data.importante.map((item, index) => (
-                        <li key={index} style={{ marginBottom: '0.8rem' }}>{item}</li>
-                    ))}
-                </ul>
-            </section>
-
-            <CTA
-                title="¿Necesitas más información?"
-                text="Si tienes dudas sobre la lista o la entrega de materiales, contáctanos y te orientamos."
-                primaryLabel="Ir a Contacto"
-                onPrimaryClick={() => navigate('/contacto')}
-                secondaryLabel="Volver a Materiales"
-                onSecondaryClick={() => navigate('/materiales')}
-            />
+      <PageLayout title="Página no encontrada">
+        <div className="p-10 text-center min-h-[60vh] flex flex-col items-center justify-center">
+          <h1 className="text-3xl font-bold text-primary mb-6">
+            Página no encontrada
+          </h1>
+          <BotonContacto onClick={() => navigate("/materiales")}>
+            Volver a Materiales
+          </BotonContacto>
         </div>
+      </PageLayout>
     );
+  }
+
+  return (
+    <PageLayout title={data.title}>
+      <SectionHero
+        title={data.title}
+        subtitle={data.subtitle}
+        pill={
+          <span className="flex items-center gap-2">
+            <FaSchool /> Materiales
+          </span>
+        }
+      />
+
+      <div className="max-w-[900px] mx-auto mt-12 pb-20 space-y-12 px-4">
+        <Section spacing="py-0">
+          <Card className="bg-gray-50 border-gray-100">
+            <h2 className="text-primary text-2xl font-bold mb-8 text-center">
+              Lista de Útiles
+            </h2>
+
+            <div className="text-center mb-10">
+              <a
+                href={`${import.meta.env.BASE_URL}${data.pdf.replace(/^\//, "")}`}
+                download
+                className="inline-block px-8 py-4 bg-primary text-white no-underline rounded-xl font-bold transition-all duration-300 transform hover:bg-accent hover:text-primary hover:-translate-y-1 shadow-md"
+              >
+                <FaFilePdf /> Descargar lista de útiles (PDF)
+              </a>
+            </div>
+
+            <div className="space-y-8">
+              {data.sections.map((section, sIdx) => (
+                <div
+                  key={sIdx}
+                  className="bg-white p-6 rounded-xl border border-gray-100 shadow-xs"
+                >
+                  <h3 className="text-primary text-xl font-bold mb-4 flex items-center gap-3">
+                    <span className="w-2 h-6 bg-accent rounded-full"></span>
+                    {section.heading}
+                  </h3>
+                  <ul className="list-disc pl-6 space-y-2 text-gray-700">
+                    {section.items.map((item, iIdx) => (
+                      <li key={iIdx} className="leading-relaxed">
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </Card>
+        </Section>
+
+        <Section spacing="py-0">
+          <Card className="bg-yellow-50/50 border-yellow-100 font-medium">
+            <h2 className="text-primary text-2xl font-bold mb-6 text-center flex items-center justify-center gap-3">
+              <FaTriangleExclamation className="text-2xl text-accent" />{" "}
+              Importante
+            </h2>
+            <ul className="list-disc pl-6 space-y-3 text-gray-700">
+              {data.importante.map((item, index) => (
+                <li key={index} className="leading-relaxed">
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </Card>
+        </Section>
+
+        <CTA
+          title="¿Necesitas más información?"
+          text="Si tienes dudas sobre la lista o la entrega de materiales, contáctanos y te orientamos."
+          primaryLabel="Ir a Contacto"
+          onPrimaryClick={() => navigate("/contacto")}
+          secondaryLabel="Volver a Materiales"
+          onSecondaryClick={() => navigate("/materiales")}
+        />
+      </div>
+    </PageLayout>
+  );
 };
 
 export default MaterialesDynamic;

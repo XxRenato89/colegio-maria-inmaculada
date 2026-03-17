@@ -1,9 +1,19 @@
-// src/pages/Actividades.jsx
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import SectionHero from '../components/SectionHero';
-import CTA from '../components/CTA';
-import '../App.css';
+import React from "react";
+import {
+  FaBook,
+  FaPuzzlePiece,
+  FaTrophy,
+  FaCalendarDays,
+  FaStar,
+} from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import SectionHero from "../components/SectionHero";
+import CTA from "../components/CTA";
+import "../App.css";
+
+import PageLayout from "../components/PageLayout";
+import Section from "../components/Section";
+import Card from "../components/Card";
 
 const Actividades = () => {
   const navigate = useNavigate();
@@ -13,79 +23,75 @@ const Actividades = () => {
       titulo: "Plan de Estudio",
       descripcion: "Conoce nuestro currículum y planificación académica.",
       path: "/actividades/plan-estudio",
-      icon: "📘"
+      icon: <FaBook />,
     },
     {
       titulo: "Talleres",
       descripcion: "Programas extracurriculares y actividades complementarias.",
       path: "/actividades/talleres",
-      icon: "🧩"
+      icon: <FaPuzzlePiece />,
     },
     {
       titulo: "Concursos",
       descripcion: "Participación en competencias académicas y culturales.",
       path: "/actividades/concursos",
-      icon: "🏆"
+      icon: <FaTrophy />,
     },
     {
       titulo: "Efemérides",
       descripcion: "Celebraciones y eventos especiales del calendario escolar.",
       path: "/actividades/efemerides",
-      icon: "📅"
-    }
+      icon: <FaCalendarDays />,
+    },
   ];
 
   return (
-    <div style={{ backgroundColor: '#ffffff', minHeight: '100vh', padding: '2rem' }}>
-
-      {/* HERO – estilo 2 encapsulado */}
+    <PageLayout title="Actividades">
+      {/* HERO */}
       <SectionHero
-        pill="⭐ Vida Escolar • Actividades"
+        pill={
+          <span className="flex items-center gap-2">
+            <FaStar /> Vida Escolar • Actividades
+          </span>
+        }
         title="Actividades Escolares"
-        subtitle="Programas y eventos que fortalecen talentos, convivencia y participación.
-Entra a cada sección para ver detalles y recursos."
+        subtitle={`Programas y eventos que fortalecen talentos, convivencia y participación.
+Entra a cada sección para ver detalles y recursos.`}
         primaryLabel="Consultar información"
-        onPrimaryClick={() => navigate('/contacto')}
+        onPrimaryClick={() => navigate("/contacto")}
         secondaryLabel="Ver Postulaciones"
-        onSecondaryClick={() => navigate('/postulaciones')}
+        onSecondaryClick={() => navigate("/postulaciones")}
       />
 
       {/* CARDS */}
-      <section className="act-grid">
-        {actividades.map((a, idx) => (
-          <div
-            key={idx}
-            className="act-card"
-            onClick={() => navigate(a.path)}
-            role="button"
-            tabIndex={0}
-            onKeyDown={(e) => {
-              if (e.key === 'Enter' || e.key === ' ') navigate(a.path);
-            }}
-          >
-            <div className="act-card-content">
-              <div className="act-icon" aria-hidden="true">{a.icon}</div>
-              <div>
-                <h3>{a.titulo}</h3>
-                <p>{a.descripcion}</p>
-                <div className="act-card-footer">
-                  Explorar <span className="act-arrow">→</span>
+      <Section spacing="py-12 mb-16 px-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {actividades.map((a, idx) => (
+            <Card
+              key={idx}
+              title={a.titulo}
+              subtitle={a.descripcion}
+              icon={a.icon}
+              onClick={() => navigate(a.path)}
+              footer={
+                <div className="flex items-center gap-2 text-primary font-bold text-sm">
+                  Explorar <span>→</span>
                 </div>
-              </div>
-            </div>
-          </div>
-        ))}
-      </section>
+              }
+              className="h-full flex flex-col justify-between group"
+            />
+          ))}
+        </div>
+      </Section>
 
-      {/* CTA final consistente */}
+      {/* CTA final */}
       <CTA
         title="¿Quieres saber más sobre nuestras actividades?"
-        text="Si deseas información detallada sobre talleres, concursos o actividades formativas,
-nuestro equipo estará disponible para orientarte."
+        text="Si deseas información detallada sobre talleres, concursos o actividades formativas, nuestro equipo estará disponible para orientarte."
         primaryLabel="Ir a Contacto"
-        onPrimaryClick={() => navigate('/contacto')}
+        onPrimaryClick={() => navigate("/contacto")}
       />
-    </div>
+    </PageLayout>
   );
 };
 

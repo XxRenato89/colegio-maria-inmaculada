@@ -1,6 +1,14 @@
-import React from 'react';
-import PageHero from '../components/PageHero';
-import '../App.css';
+import {
+  FaPhone,
+  FaMobileScreenButton,
+  FaEnvelope,
+  FaClock,
+  FaLocationDot,
+} from "react-icons/fa6";
+import PageLayout from "../components/PageLayout";
+import Section from "../components/Section";
+import Card from "../components/Card";
+import SectionHero from "../components/SectionHero";
 
 const Contacto = () => {
   const informacionContacto = {
@@ -21,129 +29,173 @@ const Contacto = () => {
     tiposEnsenanza: [
       "Educación Parvularia (NT1 - NT2)",
       "Educación Básica (1° a 8° básico)",
-      "Educación Media (I° a IV° Medio)"
+      "Educación Media (I° a IV° Medio)",
     ],
     jornada: "Jornada Escolar Completa",
-    horario: "08:30 - 17:30 hrs"
+    horario: "08:30 - 17:30 hrs",
   };
 
-
   return (
-    <div style={{
-      backgroundColor: 'transparent',
-      minHeight: '100vh',
-      padding: '2rem 1rem',
-      fontFamily: 'Arial, sans-serif'
-    }}>
-
-      {/* Hero */}
-      <PageHero
-        title="Contáctanos"
-        subtitle="Estamos aquí para ayudarte. Comunícate con nosotros."
+    <PageLayout title="Contacto">
+      {/* HERO */}
+      <SectionHero
+        pill={
+          <span className="flex items-center gap-2">
+            <FaPhone /> Contacto
+          </span>
+        }
+        title="Estamos aquí para ayudarte"
+        subtitle="Comunícate con nosotros para cualquier consulta o información adicional."
       />
 
-      <div style={{ maxWidth: '850px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div className="max-w-[1000px] mx-auto mt-12 pb-20 space-y-12 px-4">
+        {/* GRID PRINCIPAL: Info e Ubicación */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+          {/* Columna Info: Tarjetas Apiladas */}
+          <div className="space-y-6">
+            <Card
+              title="Datos de Contacto"
+              className="border-l-4 border-l-primary"
+            >
+              <div className="space-y-4">
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <FaMobileScreenButton />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-sm">
+                      Teléfono & Celular
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {informacionContacto.telefono}
+                    </p>
+                    <p className="text-gray-600 text-sm">
+                      {informacionContacto.celular}
+                    </p>
+                  </div>
+                </div>
 
-        {/* Información Institucional */}
-        <section style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '15px',
-          padding: '2.5rem',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-        }}>
-          <h2 style={{ color: '#181760', fontSize: '1.4rem', marginBottom: '2rem', textAlign: 'center', fontWeight: 'bold' }}>
-            Información Institucional
-          </h2>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <FaEnvelope />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-sm">
+                      Correo Electrónico
+                    </h4>
+                    <p className="text-gray-600 text-sm italic">
+                      {informacionContacto.email}
+                    </p>
+                  </div>
+                </div>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h3 style={{ color: '#181760', fontSize: '1.2rem', marginBottom: '0.75rem', fontWeight: 'bold' }}>
-                {informacionContacto.nombre}
-              </h3>
-              <p style={{ margin: '0.4rem 0' }}><strong>RBD:</strong> {informacionContacto.rbd}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Directora:</strong> {informacionContacto.directora}</p>
-            </div>
+                <div className="flex gap-4">
+                  <div className="w-10 h-10 shrink-0 rounded-full bg-primary/5 flex items-center justify-center text-primary">
+                    <FaClock />
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-gray-800 text-sm">
+                      Horario de Atención
+                    </h4>
+                    <p className="text-gray-600 text-sm">
+                      {informacionContacto.horario}
+                    </p>
+                    <p className="text-gray-400 text-xs mt-1">
+                      Atención presencial y telefónica
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </Card>
 
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h4 style={{ color: '#181760', fontSize: '1.1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Dirección</h4>
-              <p style={{ margin: '0.4rem 0' }}>{informacionContacto.direccion}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Comuna:</strong> {informacionContacto.comuna}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Provincia:</strong> {informacionContacto.provincia}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Región:</strong> {informacionContacto.region}</p>
-            </div>
-
-            <div style={{ marginBottom: '1.5rem' }}>
-              <h4 style={{ color: '#181760', fontSize: '1.1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Contacto</h4>
-              <p style={{ margin: '0.4rem 0' }}><strong>Teléfono:</strong> {informacionContacto.telefono}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Celular:</strong> {informacionContacto.celular}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Email:</strong> {informacionContacto.email}</p>
-            </div>
-
-            <div>
-              <h4 style={{ color: '#181760', fontSize: '1.1rem', marginBottom: '0.5rem', fontWeight: 'bold' }}>Información General</h4>
-              <p style={{ margin: '0.4rem 0' }}><strong>Carácter:</strong> {informacionContacto.caracter}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Fecha Fundación:</strong> {informacionContacto.fechaFundacion}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Dependencia:</strong> {informacionContacto.dependencia}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Jornada:</strong> {informacionContacto.jornada}</p>
-              <p style={{ margin: '0.4rem 0' }}><strong>Horario:</strong> {informacionContacto.horario}</p>
-            </div>
-        </section>
-
-        {/* Nuestra Ubicación */}
-        <section style={{
-          backgroundColor: '#ffffff',
-          borderRadius: '15px',
-          padding: '2.5rem',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
-          textAlign: 'center'
-        }}>
-          <h2 style={{ color: '#181760', fontSize: '1.4rem', marginBottom: '2rem', fontWeight: 'bold' }}>
-            Nuestra Ubicación
-          </h2>
-          <div style={{ height: '350px', borderRadius: '12px', overflow: 'hidden', marginBottom: '1.5rem', border: '1px solid #eee' }}>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.8745678901234!2d-72.3456789!3d-37.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96681b2a82a8282b%3A0xc0c7c7c0c7c7c7c0!2sAv.%20Las%20Quintas%20188%2C%20Los%20%C3%81ngeles%2C%20Biob%C3%ADo!5e0!3m2!1ses!2scl!4v1234567890123!5m2!1ses!2scl"
-              width="100%"
-              height="100%"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              title="Ubicación Colegio María Inmaculada Los Ángeles"
-            />
+            <Card
+              title="Información Institucional"
+              className="bg-gray-50/50 border-none shrink-0"
+            >
+              <div className="space-y-3">
+                <p className="text-sm text-gray-700">
+                  <strong>Nombre:</strong> {informacionContacto.nombre}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Directora:</strong> {informacionContacto.directora}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>RBD:</strong> {informacionContacto.rbd}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Dependencia:</strong>{" "}
+                  {informacionContacto.dependencia}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Carácter:</strong> {informacionContacto.caracter}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Fecha de Fundación:</strong> {informacionContacto.fechaFundacion}
+                </p>
+                <p className="text-sm text-gray-700">
+                  <strong>Jornada:</strong> {informacionContacto.jornada}
+                </p>
+              </div>
+            </Card>
           </div>
-          <div>
-            <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#181760' }}>
-              <strong>Avenida Las Quintas 188, Los Ángeles</strong>
-            </p>
-            <p style={{ color: '#666', fontSize: '0.95rem', lineHeight: '1.5' }}>
-              Sector sur de la ciudad de Los Ángeles<br />
-              Colindante con Villa Las Quintas y sector Paillihue
-            </p>
+
+          {/* Columna Ubicación: Mapa y Dirección */}
+          <div className="space-y-6">
+            <Card className="p-0 overflow-hidden border-none shadow-xl">
+              <div className="h-[400px]">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3220.8745678901234!2d-72.3456789!3d-37.456789!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x96681b2a82a8282b%3A0xc0c7c7c0c7c7c7c0!2sAv.%20Las%20Quintas%20188%2C%20Los%20%C3%81ngeles%2C%20Biob%C3%ADo!5e0!3m2!1ses!2scl!4v1234567890123!5m2!1ses!2scl"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen=""
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Ubicación Colegio María Inmaculada Los Ángeles"
+                />
+              </div>
+              <div className="p-6 bg-white border-t border-gray-100">
+                <div className="flex gap-4">
+                  <FaLocationDot className="text-2xl text-primary" />
+                  <div>
+                    <h4 className="font-bold text-primary mb-1">
+                      {informacionContacto.direccion}
+                    </h4>
+                    <p className="text-gray-500 text-sm leading-relaxed">
+                      Sector sur de Los Ángeles. Colindante con Villa Las
+                      Quintas y sector Paillihue.
+                    </p>
+                    <div className="mt-3 flex flex-wrap gap-2 text-[10px] uppercase font-bold text-gray-400">
+                      <span>{informacionContacto.comuna}</span>
+                      <span>•</span>
+                      <span>{informacionContacto.provincia}</span>
+                      <span>•</span>
+                      <span>{informacionContacto.region}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Card>
           </div>
-        </section>
+        </div>
 
-        {/* Horario de Atención */}
-        <section style={{
-          backgroundColor: '#fffbe6',
-          borderRadius: '15px',
-          padding: '2rem',
-          boxShadow: '0 10px 30px rgba(0,0,0,0.05)',
-          textAlign: 'center',
-          border: '1px solid #ffe58f'
-        }}>
-          <h2 style={{ color: '#181760', fontSize: '1.4rem', marginBottom: '1rem', fontWeight: 'bold' }}>
-            Horario de Atención
-          </h2>
-          <p style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: '#333' }}>
-            <strong>Lunes a Viernes:</strong> {informacionContacto.horario}
-          </p>
-          <p style={{ color: '#777', fontSize: '0.95rem' }}>
-            Atención presencial y telefónica durante todo el año escolar
-          </p>
-        </section>
-
+        {/* RECONOCIMIENTO Y ENSEÑANZA */}
+        <Section spacing="py-0">
+          <Card
+            className="bg-primary text-white border-none text-center py-10"
+          >
+            <h1 className="text-2xl font-bold mb-6">Reconocimiento Oficial</h1>
+            <p className="text-gray-200 text-sm max-w-2xl mx-auto italic mb-6">
+              "Nos enorgullece ser un establecimiento educacional acreditado y
+              reconocido por el Ministerio de Educación."
+            </p>
+            <div className="inline-block px-4 py-2 bg-white/10 rounded-full border border-white/20 text-xs font-mono">
+              {informacionContacto.reconocimiento}
+            </div>
+          </Card>
+        </Section>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 

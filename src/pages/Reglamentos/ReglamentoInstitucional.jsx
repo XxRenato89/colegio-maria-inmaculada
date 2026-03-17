@@ -1,14 +1,22 @@
-import React from 'react';
+/**
+ * Página de Reglamento Institucional
+ * 
+ * Una guía completa de las políticas internas del colegio, estándares de comportamiento
+ * y mecanismos de resolución de conflictos. Utiliza un diseño estructurado con tarjetas
+ * para presentar información regulatoria compleja de manera clara.
+ */
+import { FaBook, FaBalanceScale } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
-import BotonContacto from '../components/BotonContacto';
-import '../App.css';
+import PageLayout from '../../components/PageLayout';
+import Section from '../../components/Section';
+import Card from '../../components/Card';
+import SectionHero from '../../components/SectionHero';
+import '../../App.css';
 
 const ReglamentoInstitucional = () => {
   const navigate = useNavigate();
 
-  // NOTA: La siguiente información es ILUSTRATIVA y debe ser reemplazada
-  // con las normas específicas del Colegio María Inmaculada de Los Ángeles
+  /** Lista de principios de convivencia y sus aspectos específicos */
   const principiosConvivencia = [
     {
       titulo: "Respeto Mutuo",
@@ -102,6 +110,8 @@ const ReglamentoInstitucional = () => {
   const tiposInfracciones = [
     {
       nivel: "Leves",
+      color: "text-green-600",
+      bg: "bg-green-50/50",
       descripcion: "Faltas que afectan mínimamente la convivencia escolar.",
       ejemplos: [
         "Llegar tarde sin justificación",
@@ -117,6 +127,8 @@ const ReglamentoInstitucional = () => {
     },
     {
       nivel: "Graves",
+      color: "text-yellow-600",
+      bg: "bg-yellow-50/50",
       descripcion: "Faltas que afectan significativamente la convivencia escolar.",
       ejemplos: [
         "Falta de respeto a docentes o compañeros",
@@ -133,6 +145,8 @@ const ReglamentoInstitucional = () => {
     },
     {
       nivel: "Gravísimas",
+      color: "text-red-600",
+      bg: "bg-red-50/50",
       descripcion: "Faltas que ponen en riesgo la integridad física o moral.",
       ejemplos: [
         "Amenazas o violencia física",
@@ -183,271 +197,187 @@ const ReglamentoInstitucional = () => {
   ];
 
   return (
-    <div style={{
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      color: '#333'
-    }}>
-
-      {/* ✅ HERO refactorizado */}
-      <PageHero
+    <PageLayout>
+      <SectionHero
+        pill={<span className="flex items-center gap-2"><FaBook /> Reglamentos</span>}
         title="Reglamento Institucional"
-        subtitle="Normas generales que rigen el funcionamiento del colegio"
+        subtitle="Normas generales que rigen el funcionamiento y la convivencia de nuestro colegio."
       />
 
-      {/* Aviso importante */}
-      <div style={{
-        backgroundColor: '#fff3cd',
-        border: '1px solid #ffeaa7',
-        borderRadius: '5px',
-        padding: '1rem',
-        maxWidth: '600px',
-        margin: '0 auto 2rem'
-      }}>
-        <p style={{ color: '#856404', fontSize: '0.9rem', margin: 0 }}>
-          <strong>NOTA:</strong> Esta información es ilustrativa. Las normas específicas
-          del colegio deben ser proporcionadas por la administración.
-        </p>
+      <div className="max-w-[1000px] mx-auto mt-12 pb-20 space-y-12 px-4">
+        {/* Aviso importante */}
+        <div className="bg-yellow-50 border border-yellow-100 rounded-2xl p-6 shadow-sm">
+          <p className="text-yellow-800 text-sm font-medium italic text-center">
+            <strong>NOTA:</strong> Esta información es ilustrativa. Las normas específicas oficiales deben ser consultadas en la administración del establecimiento.
+          </p>
+        </div>
+
+        {/* Propósito */}
+        <Section spacing="py-0">
+          <Card title="Propósito del Reglamento" className="border-l-4 border-l-primary leading-relaxed text-gray-600 text-justify">
+            <p>
+              Este reglamento tiene como objetivo promover una convivencia escolar basada en
+              el respeto, la tolerancia y la solidaridad entre todos los miembros de nuestra
+              comunidad educativa. Establece las normas de conducta que permiten crear un
+              ambiente propicio para el aprendizaje y el desarrollo integral de nuestros
+              estudiantes, en consonancia con los valores cristianos que inspiran nuestra
+              institución.
+            </p>
+          </Card>
+        </Section>
+
+        {/* Principios */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Principios Fundamentales</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {principiosConvivencia.map((principio, index) => (
+              <Card
+                key={index}
+                title={principio.titulo}
+              >
+                <p className="text-secondary text-sm italic mb-4">
+                  {principio.descripcion}
+                </p>
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  {principio.aspectos.map((a, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-primary font-bold">•</span> {a}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* Normas Básicas */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Normas de Conducta</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {normasBasicas.map((categoria, index) => (
+              <Card
+                key={index}
+                title={categoria.categoria}
+                className="bg-gray-50/50 border-none shadow-none"
+              >
+                <ul className="space-y-2 text-gray-600 text-sm">
+                  {categoria.normas.map((n, i) => (
+                    <li key={i} className="flex gap-2">
+                      <span className="text-secondary font-bold">✓</span> {n}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* Infracciones */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Infracciones y Consecuencias</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {tiposInfracciones.map((tipo, index) => (
+              <Card
+                key={index}
+                className={`${tipo.bg} border-none shadow-md`}
+              >
+                <h3 className={`${tipo.color} font-black text-xl mb-4 uppercase`}>
+                  {tipo.nivel}
+                </h3>
+                <p className="text-xs text-gray-600 mb-6 italic leading-relaxed">
+                  {tipo.descripcion}
+                </p>
+                <div className="space-y-6">
+                  <div>
+                    <h4 className="font-bold text-primary text-[10px] uppercase mb-2 tracking-widest">Ejemplos</h4>
+                    <ul className="space-y-1">
+                      {tipo.ejemplos.map((ej, i) => (
+                        <li key={i} className="text-[11px] text-gray-500">• {ej}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-primary text-[10px] uppercase mb-2 tracking-widest">Consecuencias</h4>
+                    <ul className="space-y-1">
+                      {tipo.consecuencias.map((c, i) => (
+                        <li key={i} className="text-[11px] text-gray-500">• {c}</li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* Resolución */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Resolución de Conflictos</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {mecanismosResolucion.map((m, index) => (
+              <Card
+                key={index}
+                title={m.nombre}
+                className="h-full border-gray-100"
+              >
+                <p className="text-[11px] text-gray-500 mb-4 italic leading-relaxed">
+                  {m.descripcion}
+                </p>
+                <div className="pt-4 border-t border-gray-50">
+                  <h4 className="text-[10px] font-bold text-secondary uppercase mb-2">Proceso</h4>
+                  <ol className="space-y-2">
+                    {m.proceso.map((p, i) => (
+                      <li key={i} className="text-[11px] text-gray-600 flex gap-2">
+                        <span className="font-black text-primary/30">{i + 1}.</span> {p}
+                      </li>
+                    ))}
+                  </ol>
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* Derechos y Deberes */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card className="bg-primary text-white border-none shadow-xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <FaBalanceScale className="text-2xl" /> Derechos Estudiantiles
+            </h3>
+            <ul className="space-y-3 text-sm opacity-90 italic">
+              <li>• Ser respetado en su dignidad</li>
+              <li>• Participar en actividades escolares</li>
+              <li>• Expresar libremente sus ideas</li>
+              <li>• Recibir educación de calidad</li>
+              <li>• Ser escuchado en decisiones que les afectan</li>
+            </ul>
+          </Card>
+
+          <Card className="bg-secondary text-white border-none shadow-xl">
+            <h3 className="text-xl font-bold mb-6 flex items-center gap-3">
+              <FaBook className="text-2xl" /> Deberes Estudiantiles
+            </h3>
+            <ul className="space-y-3 text-sm opacity-90 italic">
+              <li>• Respetar a compañeros y docentes</li>
+              <li>• Cumplir con normas de convivencia</li>
+              <li>• Asistir puntualmente a clases</li>
+              <li>• Participar activamente en el aprendizaje</li>
+              <li>• Cuidar el patrimonio escolar</li>
+            </ul>
+          </Card>
+        </div>
+
+        {/* Botón de regreso */}
+        <div className="flex justify-center pt-8">
+          <button
+            onClick={() => navigate('/reglamentos')}
+            className="group flex items-center gap-3 px-8 py-3 bg-primary text-white rounded-full font-bold shadow-2xl hover:bg-accent transition-all duration-300"
+          >
+            <span className="text-xl group-hover:-translate-x-1 transition-transform">←</span> Volver a Reglamentos
+          </button>
+        </div>
       </div>
-
-      {/* Introducción */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '0 auto 2rem',
-        backgroundColor: '#f9f9f9',
-        padding: '2rem',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-      }}>
-        <h2 style={{ color: '#181760', marginBottom: '1rem', textAlign: 'center' }}>
-          Propósito del Reglamento
-        </h2>
-        <p style={{ fontSize: '1.05rem', lineHeight: '1.6', textAlign: 'justify' }}>
-          Este reglamento tiene como objetivo promover una convivencia escolar basada en
-          el respeto, la tolerancia y la solidaridad entre todos los miembros de nuestra
-          comunidad educativa. Establece las normas de conducta que permiten crear un
-          ambiente propicio para el aprendizaje y el desarrollo integral de nuestros
-          estudiantes, en consonancia con los valores cristianos que inspiran nuestra
-          institución.
-        </p>
-      </section>
-
-      {/* Principios */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto 2rem', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Principios Fundamentales
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {principiosConvivencia.map((principio, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                {principio.titulo}
-              </h3>
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {principio.descripcion}
-              </p>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {principio.aspectos.map((a, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>{a}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Normas */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Normas Básicas de Conducta
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {normasBasicas.map((categoria, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.2rem' }}>
-                {categoria.categoria}
-              </h3>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {categoria.normas.map((n, i) => (
-                  <li key={i} style={{ marginBottom: '0.7rem' }}>{n}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Infracciones */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Tipos de Infracciones y Consecuencias
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {tiposInfracciones.map((tipo, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{
-                color: index === 0 ? '#28a745' : index === 1 ? '#ffc107' : '#dc3545',
-                marginBottom: '1rem',
-                fontSize: '1.3rem'
-              }}>
-                {tipo.nivel}
-              </h3>
-
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {tipo.descripcion}
-              </p>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>Ejemplos:</h4>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444', marginBottom: '1rem' }}>
-                {tipo.ejemplos.map((ej, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>{ej}</li>
-                ))}
-              </ul>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>Consecuencias:</h4>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {tipo.consecuencias.map((c, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>{c}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Resolución */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Mecanismos de Resolución de Conflictos
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {mecanismosResolucion.map((m, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                {m.nombre}
-              </h3>
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {m.descripcion}
-              </p>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>Proceso:</h4>
-              <ol style={{ paddingLeft: '1.5rem', color: '#444' }}>
-                {m.proceso.map((p, i) => (
-                  <li key={i} style={{ marginBottom: '0.7rem' }}>{p}</li>
-                ))}
-              </ol>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Derechos y Deberes */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '2rem auto',
-        backgroundColor: '#d4edda',
-        padding: '2rem',
-        borderRadius: '10px',
-        border: '1px solid #c3e6cb'
-      }}>
-        <h2 style={{ color: '#155724', marginBottom: '1rem', textAlign: 'center' }}>
-          Derechos y Deberes de los Estudiantes
-        </h2>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem' }}>
-          <div>
-            <h3 style={{ color: '#181760', marginBottom: '1rem' }}>Derechos</h3>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li style={{ marginBottom: '0.5rem' }}>Ser respetado en su dignidad</li>
-              <li style={{ marginBottom: '0.5rem' }}>Participar en actividades escolares</li>
-              <li style={{ marginBottom: '0.5rem' }}>Expresar libremente sus ideas</li>
-              <li style={{ marginBottom: '0.5rem' }}>Recibir educación de calidad</li>
-              <li style={{ marginBottom: '0.5rem' }}>Ser escuchado en decisiones que les afectan</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 style={{ color: '#181760', marginBottom: '1rem' }}>Deberes</h3>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li style={{ marginBottom: '0.5rem' }}>Respetar a compañeros y docentes</li>
-              <li style={{ marginBottom: '0.5rem' }}>Cumplir con normas de convivencia</li>
-              <li style={{ marginBottom: '0.5rem' }}>Asistir puntualmente a clases</li>
-              <li style={{ marginBottom: '0.5rem' }}>Participar activamente en el aprendizaje</li>
-              <li style={{ marginBottom: '0.5rem' }}>Cuidar el patrimonio escolar</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ✅ Botón de regreso refactorizado */}
-      <section style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <BotonContacto
-          onClick={() => navigate('/reglamentos')}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#FFD700')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#181760')}
-        >
-          ← Volver a Reglamentos
-        </BotonContacto>
-      </section>
-    </div>
+    </PageLayout>
   );
 };
 

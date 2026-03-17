@@ -1,463 +1,202 @@
-import React from 'react';
+import { FaHandshake, FaBalanceScale, FaBook } from 'react-icons/fa6';
 import { useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
-import BotonContacto from '../components/BotonContacto';
-import '../App.css';
+import PageLayout from '../../components/PageLayout';
+import Section from '../../components/Section';
+import Card from '../../components/Card';
+import SectionHero from '../../components/SectionHero';
 
 const ReglamentoConvivencia = () => {
   const navigate = useNavigate();
 
-  // NOTA: La siguiente información es ILUSTRATIVA y debe ser reemplazada
-  // con las normas específicas del Colegio María Inmaculada de Los Ángeles
   const principiosConvivencia = [
     {
       titulo: "Respeto Mutuo",
       descripcion: "Trato digno y considerado entre todos los miembros de la comunidad educativa.",
-      aspectos: [
-        "Escucha activa y empática",
-        "Uso de lenguaje respetuoso",
-        "Reconocimiento de la diversidad",
-        "Valoración de las diferencias individuales"
-      ]
+      aspectos: ["Escucha activa", "Lenguaje respetuoso", "Reconocimiento de diversidad"]
     },
     {
       titulo: "Responsabilidad",
       descripcion: "Compromiso con las normas y deberes escolares.",
-      aspectos: [
-        "Cumplimiento puntual de horarios",
-        "Cuidado del patrimonio escolar",
-        "Participación activa en actividades",
-        "Asumir las consecuencias de los actos"
-      ]
+      aspectos: ["Puntualidad", "Cuidado del patrimonio", "Participación activa"]
     },
     {
       titulo: "Solidaridad",
       descripcion: "Apoyo y colaboración entre compañeros y con la comunidad.",
-      aspectos: [
-        "Ayuda a compañeros en dificultades",
-        "Participación en actividades solidarias",
-        "Respeto a personas vulnerables",
-        "Promoción del trabajo en equipo"
-      ]
+      aspectos: ["Ayuda mutua", "Trabajo en equipo", "Respeto a vulnerables"]
     },
     {
       titulo: "Honestidad",
       descripcion: "Actitud veraz en todas las interacciones escolares.",
-      aspectos: [
-        "No copiar en evaluaciones",
-        "Ser sincero en comunicaciones",
-        "Devolver objetos encontrados",
-        "Reconocer errores y aprender de ellos"
-      ]
+      aspectos: ["Sinceridad", "Transparencia", "Reconocimiento de errores"]
     }
   ];
 
   const normasBasicas = [
     {
       categoria: "En el Aula",
-      normas: [
-        "Levantar la mano para participar",
-        "Respetar el turno de palabra",
-        "Mantener el orden durante clases",
-        "Cuidar el mobiliario y materiales",
-        "Apagar dispositivos electrónicos",
-        "Asistir puntualmente a clases"
-      ]
+      normas: ["Levantar la mano", "Respetar el turno de palabra", "Mantener el orden", "Cuidar mobiliario"]
     },
     {
-      categoria: "En los Recintos Escolares",
-      normas: [
-        "Caminar en forma ordenada en pasillos",
-        "No correr ni hacer ruido excesivo",
-        "Mantener limpios los espacios",
-        "Respetar áreas de descanso",
-        "Usar instalaciones adecuadamente",
-        "No consumir alimentos fuera del casino"
-      ]
+      categoria: "En el Recinto",
+      normas: ["Caminar ordenadamente", "Mantener limpieza", "Respetar áreas", "Uso adecuado instalaciones"]
     },
     {
-      categoria: "En Relación con Compañeros",
-      normas: [
-        "Evitar burlas y discriminación",
-        "Resolver conflictos dialogando",
-        "Ayudar a compañeros que lo necesiten",
-        "Incluir a todos en actividades",
-        "Respetar espacio personal",
-        "Denunciar situaciones de riesgo"
-      ]
+      categoria: "Con Compañeros",
+      normas: ["Evitar burlas", "Resolver dialogando", "Ayudar mutua", "Inclusión total"]
     },
     {
-      categoria: "En Relación con Docentes",
-      normas: [
-        "Dirigirse con respeto a los profesores",
-        "Cumplir con las tareas asignadas",
-        "Participar activamente en clases",
-        "Presentar excusas médicas oportunamente",
-        "Solicitar ayuda cuando sea necesario",
-        "Cumplir con los acuerdos establecidos"
-      ]
+      categoria: "Con Docentes",
+      normas: ["Trato respetuoso", "Cumplir tareas", "Participación activa", "Sinceridad"]
     }
   ];
 
   const tiposInfracciones = [
     {
       nivel: "Leves",
-      descripcion: "Faltas que afectan mínimamente la convivencia escolar.",
-      ejemplos: [
-        "Llegar tarde sin justificación",
-        "No traer materiales escolares",
-        "Hablar sin permiso en clase",
-        "No cumplir con uniforme"
-      ],
-      consecuencias: [
-        "Llamado de atención verbal",
-        "Reflexión escrita sobre la conducta",
-        "Compromiso de mejora firmado"
-      ]
+      color: "text-green-600",
+      bg: "bg-green-50/50",
+      ejemplos: ["Atrasos", "Falta materiales", "Hablar sin permiso"]
     },
     {
       nivel: "Graves",
-      descripcion: "Faltas que afectan significativamente la convivencia escolar.",
-      ejemplos: [
-        "Falta de respeto a docentes o compañeros",
-        "No cumplir con sanciones anteriores",
-        "Provocar disturbios en clases",
-        "No seguir instrucciones de autoridad"
-      ],
-      consecuencias: [
-        "Citación a apoderados",
-        "Suspensión de actividades extraprogramáticas",
-        "Trabajo comunitario escolar",
-        "Informe escrito a dirección"
-      ]
+      color: "text-yellow-600",
+      bg: "bg-yellow-50/50",
+      ejemplos: ["Faltas de respeto", "Incumplimiento sanciones", "Disturbios"]
     },
     {
       nivel: "Gravísimas",
-      descripcion: "Faltas que ponen en riesgo la integridad física o moral.",
-      ejemplos: [
-        "Amenazas o violencia física",
-        "Consumo de sustancias prohibidas",
-        "Robo o hurto en el colegio",
-        "Acoso escolar (bullying)"
-      ],
-      consecuencias: [
-        "Suspensión temporal de clases",
-        "Citación a consejo de profesores",
-        "Derivación a especialistas",
-        "Suspensión del establecimiento"
-      ]
-    }
-  ];
-
-  const mecanismosResolucion = [
-    {
-      nombre: "Diálogo Directo",
-      descripcion: "Primera instancia para resolver conflictos menores.",
-      proceso: [
-        "Las partes involucradas dialogan",
-        "Se buscan soluciones consensuadas",
-        "Se establecen compromisos de conducta",
-        "Seguimiento por el profesor jefe"
-      ]
-    },
-    {
-      nombre: "Mesa de Diálogo",
-      descripcion: "Instancia mediada por profesionales para conflictos moderados.",
-      proceso: [
-        "Intervención de orientador escolar",
-        "Participación de apoderados si es necesario",
-        "Elaboración de plan de convivencia",
-        "Seguimiento sistemático"
-      ]
-    },
-    {
-      nombre: "Consejo de Convivencia",
-      descripcion: "Instancia formal para casos graves con participación directiva.",
-      proceso: [
-        "Investigación del caso por dirección",
-        "Citación a todas las partes involucradas",
-        "Determinación de responsabilidades",
-        "Aplicación de sanciones correspondientes"
-      ]
+      color: "text-red-600",
+      bg: "bg-red-50/50",
+      ejemplos: ["Violencia física", "Bullying", "Sustancias prohibidas"]
     }
   ];
 
   return (
-    <div style={{
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      color: '#333'
-    }}>
-
-      {/* ✅ HERO refactorizado */}
-      <PageHero
-        title="Reglamento de Convivencia Escolar"
-        subtitle="Directrices para una convivencia escolar respetuosa y segura"
+    <PageLayout>
+      {/* HERO */}
+      <SectionHero
+        pill={<span className="flex items-center gap-2"><FaHandshake /> Convivencia</span>}
+        title="Convivencia Escolar"
+        subtitle="Directrices para una convivencia escolar respetuosa, segura y armoniosa en nuestro colegio."
       />
 
-      {/* Aviso importante */}
-      <div style={{
-        backgroundColor: '#fff3cd',
-        border: '1px solid #ffeaa7',
-        borderRadius: '5px',
-        padding: '1rem',
-        maxWidth: '600px',
-        margin: '0 auto 2rem'
-      }}>
-        <p style={{ color: '#856404', fontSize: '0.9rem', margin: 0 }}>
-          <strong>NOTA:</strong> Esta información es ilustrativa. Las normas específicas
-          del colegio deben ser proporcionadas por la administración.
-        </p>
+      <div className="max-w-[1100px] mx-auto mt-12 pb-20 space-y-16 px-4">
+        
+        {/* AVISO */}
+        <div className="bg-yellow-50 border border-yellow-100 rounded-2xl p-6 text-center max-w-2xl mx-auto shadow-sm">
+           <p className="text-yellow-800 text-sm font-medium italic">
+             <strong>NOTA:</strong> Esta información es ilustrativa. Las normas específicas oficiales deben ser consultadas en la administración.
+           </p>
+        </div>
+
+        {/* PROPÓSITO */}
+        <Section spacing="py-0">
+          <Card className="border-l-4 border-l-primary bg-primary/5">
+            <h2 className="text-primary text-xl font-bold mb-4">Propósito del Reglamento</h2>
+            <p className="text-gray-600 leading-relaxed text-sm md:text-base text-justify">
+              Este reglamento busca promover una convivencia escolar basada en el respeto, la tolerancia y la solidaridad. Establece normas que permiten crear un ambiente propicio para el aprendizaje y el desarrollo integral, en consonancia con los valores cristianos que inspiran nuestra institución.
+            </p>
+          </Card>
+        </Section>
+
+        {/* PRINCIPIOS */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Principios Fundamentales</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {principiosConvivencia.map((p, i) => (
+              <Card key={i} title={p.titulo} className="hover:shadow-lg transition-all h-full">
+                <p className="text-[11px] text-gray-500 mb-4 italic leading-relaxed">{p.descripcion}</p>
+                <ul className="space-y-2">
+                  {p.aspectos.map((a, idx) => (
+                    <li key={idx} className="text-xs text-secondary flex gap-2">
+                      <span className="text-primary font-bold">•</span> {a}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* NORMAS BÁSICAS */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Protocolos de Conducta</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {normasBasicas.map((cat, i) => (
+              <Card key={i} title={cat.categoria} className="bg-gray-50/50 border-none shadow-sm">
+                <ul className="space-y-2">
+                  {cat.normas.map((n, idx) => (
+                    <li key={idx} className="text-xs text-gray-600 flex gap-2">
+                      <span className="text-secondary opacity-50">✓</span> {n}
+                    </li>
+                  ))}
+                </ul>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* INFRACCIONES */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center uppercase tracking-widest italic">Categorización de Faltas</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {tiposInfracciones.map((t, i) => (
+              <Card key={i} className={`${t.bg} border-none shadow-md overflow-hidden text-center`}>
+                <h3 className={`${t.color} font-black text-xl mb-6 uppercase tracking-tighter`}>{t.nivel}</h3>
+                <div className="space-y-3">
+                   {t.ejemplos.map((ej, idx) => (
+                     <div key={idx} className="text-xs text-gray-500 font-medium py-1 border-b border-black/5 last:border-none">
+                        {ej}
+                     </div>
+                   ))}
+                </div>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* DERECHOS Y DEBERES */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+           <Card title={<span className="flex items-center gap-2"><FaBalanceScale /> Derechos del Estudiante</span>} className="bg-primary text-white border-none shadow-xl">
+              <ul className="space-y-4 text-sm opacity-90 italic leading-relaxed">
+                <li>• Ser respetado en su dignidad y libertad de expresión.</li>
+                <li>• Participar en actividades escolares y recreativas.</li>
+                <li>• Recibir educación de calidad y ser escuchado.</li>
+                <li>• Un ambiente seguro y libre de discriminación.</li>
+              </ul>
+           </Card>
+           <Card title={<span className="flex items-center gap-2"><FaBook /> Deberes del Estudiante</span>} className="bg-secondary text-white border-none shadow-xl">
+              <ul className="space-y-4 text-sm opacity-90 italic leading-relaxed">
+                <li>• Respetar a todos los miembros de la comunidad.</li>
+                <li>• Cumplir puntualmente con horarios y compromisos.</li>
+                <li>• Cuidar el patrimonio y limpieza institucional.</li>
+                <li>• Mantener un comportamiento acorde a los valores del colegio.</li>
+              </ul>
+           </Card>
+        </div>
+
+        {/* RESOLUCIÓN Y CIERRE */}
+        <div className="flex flex-col items-center gap-10 py-16 bg-gray-50 rounded-[4rem] border border-gray-100 relative overflow-hidden">
+           <div className="text-center space-y-4 max-w-xl px-6 relative z-10">
+              <h4 className="text-primary font-black text-3xl">Cultura de Diálogo</h4>
+              <p className="text-gray-500 text-sm leading-relaxed">
+                Contamos con mecanismos formales para la resolución pacífica de conflictos, incluyendo mediaciones escolares, mesas de diálogo y consejos de convivencia, priorizando siempre la formación humana.
+              </p>
+           </div>
+           <button 
+             onClick={() => navigate('/reglamentos')}
+             className="group flex items-center gap-4 px-12 py-5 bg-primary text-white rounded-full font-bold shadow-2xl hover:bg-accent transition-all duration-500 relative z-10"
+           >
+             <span className="text-2xl group-hover:-translate-x-2 transition-transform duration-300">←</span> Volver a Reglamentos
+           </button>
+           
+           {/* Decorativo */}
+           <div className="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32"></div>
+           <div className="absolute bottom-0 left-0 w-48 h-48 bg-secondary/5 rounded-full -ml-24 -mb-24"></div>
+        </div>
+
       </div>
-
-      {/* Introducción */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '0 auto 2rem',
-        backgroundColor: '#f9f9f9',
-        padding: '2rem',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-      }}>
-        <h2 style={{ color: '#181760', marginBottom: '1rem', textAlign: 'center' }}>
-          Propósito del Reglamento
-        </h2>
-        <p style={{ fontSize: '1.05rem', lineHeight: '1.6', textAlign: 'justify' }}>
-          Este reglamento tiene como objetivo promover una convivencia escolar basada en
-          el respeto, la tolerancia y la solidaridad entre todos los miembros de nuestra
-          comunidad educativa. Establece las normas de conducta que permiten crear un
-          ambiente propicio para el aprendizaje y el desarrollo integral de nuestros
-          estudiantes, en consonancia con los valores cristianos que inspiran nuestra
-          institución.
-        </p>
-      </section>
-
-      {/* Principios */}
-      <section style={{ maxWidth: '1200px', margin: '0 auto 2rem', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Principios Fundamentales de Convivencia
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {principiosConvivencia.map((principio, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                {principio.titulo}
-              </h3>
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {principio.descripcion}
-              </p>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {principio.aspectos.map((aspecto, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>
-                    {aspecto}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Normas Básicas */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Normas Básicas de Conducta
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {normasBasicas.map((categoria, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.2rem' }}>
-                {categoria.categoria}
-              </h3>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {categoria.normas.map((norma, i) => (
-                  <li key={i} style={{ marginBottom: '0.7rem' }}>
-                    {norma}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Tipos de Infracciones */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Tipos de Infracciones y Consecuencias
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {tiposInfracciones.map((tipo, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{
-                color: index === 0 ? '#28a745' : index === 1 ? '#ffc107' : '#dc3545',
-                marginBottom: '1rem',
-                fontSize: '1.3rem'
-              }}>
-                {tipo.nivel}
-              </h3>
-
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {tipo.descripcion}
-              </p>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>
-                Ejemplos:
-              </h4>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444', marginBottom: '1rem' }}>
-                {tipo.ejemplos.map((ej, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>{ej}</li>
-                ))}
-              </ul>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>
-                Consecuencias:
-              </h4>
-              <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-                {tipo.consecuencias.map((c, i) => (
-                  <li key={i} style={{ marginBottom: '0.5rem' }}>{c}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Resolución de Conflictos */}
-      <section style={{ maxWidth: '1200px', margin: '2rem auto', padding: '0 1rem' }}>
-        <h2 style={{ color: '#181760', marginBottom: '1.5rem', textAlign: 'center' }}>
-          Mecanismos de Resolución de Conflictos
-        </h2>
-
-        <div style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-          gap: '1.5rem'
-        }}>
-          {mecanismosResolucion.map((m, index) => (
-            <div
-              key={index}
-              style={{
-                backgroundColor: '#fff',
-                borderRadius: '10px',
-                padding: '1.5rem',
-                boxShadow: '0 4px 8px rgba(0,0,0,0.1)',
-                border: '1px solid #e0e0e0'
-              }}
-            >
-              <h3 style={{ color: '#181760', marginBottom: '1rem', fontSize: '1.3rem' }}>
-                {m.nombre}
-              </h3>
-              <p style={{ color: '#666', marginBottom: '1rem', fontStyle: 'italic' }}>
-                {m.descripcion}
-              </p>
-
-              <h4 style={{ color: '#181760', marginBottom: '0.5rem', fontSize: '1rem' }}>
-                Proceso:
-              </h4>
-              <ol style={{ paddingLeft: '1.5rem', color: '#444' }}>
-                {m.proceso.map((p, i) => (
-                  <li key={i} style={{ marginBottom: '0.7rem' }}>{p}</li>
-                ))}
-              </ol>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Derechos y Deberes */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '2rem auto',
-        backgroundColor: '#d4edda',
-        padding: '2rem',
-        borderRadius: '10px',
-        border: '1px solid #c3e6cb'
-      }}>
-        <h2 style={{ color: '#155724', marginBottom: '1rem', textAlign: 'center' }}>
-          Derechos y Deberes de los Estudiantes
-        </h2>
-
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem', marginTop: '1rem' }}>
-          <div>
-            <h3 style={{ color: '#181760', marginBottom: '1rem' }}>Derechos</h3>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li style={{ marginBottom: '0.5rem' }}>Ser respetado en su dignidad</li>
-              <li style={{ marginBottom: '0.5rem' }}>Participar en actividades escolares</li>
-              <li style={{ marginBottom: '0.5rem' }}>Expresar libremente sus ideas</li>
-              <li style={{ marginBottom: '0.5rem' }}>Recibir educación de calidad</li>
-              <li style={{ marginBottom: '0.5rem' }}>Ser escuchado en decisiones que les afectan</li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 style={{ color: '#181760', marginBottom: '1rem' }}>Deberes</h3>
-            <ul style={{ paddingLeft: '1.2rem', color: '#444' }}>
-              <li style={{ marginBottom: '0.5rem' }}>Respetar a compañeros y docentes</li>
-              <li style={{ marginBottom: '0.5rem' }}>Cumplir con normas de convivencia</li>
-              <li style={{ marginBottom: '0.5rem' }}>Asistir puntualmente a clases</li>
-              <li style={{ marginBottom: '0.5rem' }}>Participar activamente en el aprendizaje</li>
-              <li style={{ marginBottom: '0.5rem' }}>Cuidar el patrimonio escolar</li>
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ✅ Botón de Regreso refactorizado */}
-      <section style={{ textAlign: 'center', margin: '2rem 0' }}>
-        <BotonContacto
-          onClick={() => navigate('/reglamentos')}
-          onMouseOver={(e) => (e.target.style.backgroundColor = '#FFD700')}
-          onMouseOut={(e) => (e.target.style.backgroundColor = '#181760')}
-        >
-          ← Volver a Reglamentos
-        </BotonContacto>
-      </section>
-    </div>
+    </PageLayout>
   );
 };
 

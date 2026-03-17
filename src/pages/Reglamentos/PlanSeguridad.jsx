@@ -1,229 +1,161 @@
-// src/pages/LeyTea.jsx
-import React from 'react';
-import BotonContacto from '../../components/BotonContacto';
-import '../../App.css';
+import { FaShieldHalved, FaFilePdf } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
+import PageLayout from "../../components/PageLayout";
+import Section from "../../components/Section";
+import Card from "../../components/Card";
+import SectionHero from "../../components/SectionHero";
 
-const LeyTea = () => {
+const PlanSeguridad = () => {
+  const navigate = useNavigate();
+
+  const definiciones = [
+    {
+      term: "Emergencia",
+      desc: "Suceso inesperado que requiere acción coordinada de personas entrenadas.",
+    },
+    {
+      term: "Vía de Evacuación",
+      desc: "Camino continuo y sin impedimentos hacia una zona de seguridad.",
+    },
+    {
+      term: "Señal de Alarma",
+      desc: "Indica la necesidad de evacuar hacia las zonas de seguridad.",
+    },
+    {
+      term: "Zona de Seguridad",
+      desc: "Lugar donde las personas pueden agruparse fuera del área de siniestro.",
+    },
+    {
+      term: "Simulacro",
+      desc: "Ejercicio práctico en terreno para probar la planificación de emergencias.",
+    },
+  ];
+
   return (
-    <div style={{
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      color: '#333',
-      lineHeight: '1.6'
-    }}>
+    <PageLayout title="Plan de Seguridad (PISE)">
+      {/* HERO */}
+      <SectionHero
+        pill={
+          <span className="flex items-center gap-2">
+            <FaShieldHalved /> PISE
+          </span>
+        }
+        title="Plan Integral de Seguridad"
+        subtitle="Cultura preventiva y procedimientos de emergencia para el bienestar de nuestra comunidad escolar."
+      />
 
-      {/* Título Principal */}
-      <section style={{
-        textAlign: 'center',
-        marginBottom: '2rem'
-      }}>
-        <h1 style={{
-          color: '#181760',
-          fontSize: '2.2rem',
-          marginBottom: '0.5rem'
-        }}>
-          PLAN INTEGRAL DE SEGURIDAD ESCOLAR
-        </h1>
-        <p style={{ fontSize: '1.1rem', color: '#555' }}>
-          2023
-        </p>
-      </section>
+      <div className="max-w-[1000px] mx-auto mt-12 pb-20 space-y-12 px-4">
+        {/* INTRODUCCIÓN */}
+        <Section spacing="py-0">
+          <Card className="border-l-4 border-l-primary leading-relaxed text-gray-600 space-y-4">
+            <h2 className="text-primary text-xl font-bold mb-4">
+              Introducción
+            </h2>
+            <p>
+              El Plan Integral de Seguridad Escolar (PISE) es una herramienta
+              legal que privilegia la prevención y perfecciona los mecanismos de
+              atención de accidentes y emergencias.
+            </p>
+            <p>
+              Nuestro establecimiento ha desarrollado su Plan Específico 2024,
+              abordando la diversidad de riesgos y facilitando el trabajo
+              colaborativo entre profesores, apoderados, alumnos y organismos de
+              emergencia (Bomberos, Carabineros, Salud).
+            </p>
+          </Card>
+        </Section>
 
-      {/* Contenido de la Ley */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '0 auto',
-        backgroundColor: '#f9f9f9',
-        padding: '2rem',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-      }}>
-
-        {/* Introducción */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h2 style={{ color: '#181760', marginBottom: '1rem' }}>
-            INTRODUCCIÓN
-          </h2>
-          <p>
-            En nuestro país, la seguridad escolar dispone de una herramienta legal que la sustenta: El
-            Plan Integral de Seguridad Escolar PISE, aprobado por resolución exenta Nº 51 del
-            Ministerio de Educación - 4 de enero de 2001, que rescata las principales fortalezas de la
-            antigua operación DEYSE, aplicada en todos los colegios desde 1977. Esta nueva
-            normativa privilegia la prevención y también perfecciona y refuerza los mecanismos de
-            atención de accidentes y emergencias, para sentar definitivamente las bases de una cultura
-            nacional de la prevención.
-          </p>
-          <p>
-            Este plan ha sido puesto a disposición de las instituciones educativas del país. El colegio
-            María inmaculada de Los Ángeles, por su parte, ha desarrollado su Plan Específico Integral
-            de Seguridad Escolar 20024, que aborda la diversidad de riesgos a los que hoy está
-            expuesta la comunidad colegial y facilita el trabajo sobre los riesgos presentes al interior y
-            en el entorno inmediato de la unidad educativa. Asimismo, involucra a profesores, padres y
-            apoderados, alumnos, administrativos y auxiliares, como también al Comité Paritario.
-            Además, propicia una relación permanente con los organismos operativos: Salud,
-            Bomberos, Carabineros, Cruz Roja y Oficina de Protección Civil y Emergencia.
-          </p>
-          <p>
-            El “Plan Integral de Seguridad Escolar” de nuestro Establecimiento, estará en permanente
-            actualización y perfeccionamiento. Tiene, por tanto, un carácter de proceso constante que
-            compromete a todos.
-          </p>
-          <p>
-            Nos hemos fijado como objetivo: Implementar y desarrollar un Plan de Seguridad para los
-            estudiantes y personal del Establecimiento, conocido por todos, con el fin de proteger y
-            evitar accidentes, ya sea por causas naturales o por situaciones de riesgo y cuyo fin será
-            el mejoramiento de las condiciones de seguridad y el bienestar físico de todos los
-            integrantes de la Comunidad Educativa.
-          </p>
-          <p>
-            Hemos avanzado en la formación del Equipo de Seguridad, en la ubicación de los espacios
-            de riesgo dentro del Establecimiento. También estamos en proceso de difusión del plan de
-            nuestros estudiantes sobre la importancia de su seguridad, tanto dentro como
-          </p>
-          <p>
-            uera del Establecimiento. Y también en un proceso de socialización del plan a través de su
-            publicación para el periodo 2024.
-          </p>
-        </div>
-
-        {/* Objetivo General */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h3 style={{ color: '#181760', marginBottom: '0.5rem' }}>
-            OBJETIVO GENERAL
-          </h3>
-          <ul style={{ paddingLeft: '1.5rem' }}>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <p>
-                Generar en la comunidad escolar una cultura preventiva, teniendo por sustento
-                la responsabilidad colectiva frente a la seguridad.
-              </p>
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <p>
-                Proporcionar un efectivo ambiente de seguridad integral, mientras los
-                estudiantes cumplen con sus actividades académicas.
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        {/* Objetivo especifico */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h3 style={{ color: '#181760', marginBottom: '0.5rem' }}>
-            OBJETIVOS ESPECÍFICOS
-          </h3>
-          <ul style={{ paddingLeft: '1.5rem' }}>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <p>
-                a. Actualizar, aplicar y evaluar un plan de seguridad integral que incluya procedimientos
-                de evacuación adecuados en caso de emergencias.
-              </p>
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <p>
-                b. Contribuir con el aprendizaje de actitudes de autoprotección y autocuidado, generando
-                un efectivo ambiente de seguridad replicable en el diario vivir.
-              </p>
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <p>
-                c. Organizar acciones de prevención de riesgos en los estudiantes de acuerdo a las
-                necesidades detectadas.
-              </p>
-            </li>
-          </ul>
-        </div>
-
-        {/* Definiciones */}
-        <div style={{ marginBottom: '2rem' }}>
-          <h3 style={{ color: '#181760', marginBottom: '0.5rem' }}>
-            Definiciones
-          </h3>
-          <ul style={{ paddingLeft: '1.5rem' }}>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Emergencia:</strong>
-              Suceso inesperado que puede ocasionar lesiones a las personas, daño a la
-              propiedad, o ambas situaciones a la vez y que para superarlas se requiere de una acción
-              coordinada de personas debidamente entrenadas y capacitadas.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Vía de Evacuación: </strong>
-              Una vía de evacuación es un camino continuo y sin impedimento para
-              trasladarse desde cualquier punto de una estructura al nivel de la calle o en su defecto a
-              una zona de seguridad.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Señal de Alarma: </strong>
-              Señal que ante una emergencia indica la necesidad de evacuar a las
-              personas hacia las zonas de seguridad. También pueden indicar alerta o retorno de éstas
-              a sus actividades habituales. Esta puede ser sonora o visual, o bien, ambas.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Zona de Seguridad: </strong>
-              Lugar en que las personas podrán agruparse o concentrarse sin que
-              la influencia del siniestro las afecte, al cual llegarán por medio de las vías de evacuación
-              previamente establecidas.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Simulacro:</strong>
-              Ejercicio práctico en terreno, que implica movimiento de personas y recursos,
-              en el cual los participantes se acercan lo más posible a un escenario de emergencia real.
-              Permite probar la planificación.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Coordinador General: </strong>
-              Autoridad máxima en el momento de la emergencia, responsable
-              de la gestión de control de emergencias y evacuaciones del recinto.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Monitor de Apoyo: </strong>
-              Son los responsables de evacuar a las personas de su sector, hacia
-              las zonas de seguridad, al momento de presentarse una emergencia. El Monitor de Apoyo
-              responde ante el Coordinador de Piso o Área.
-            </li>
-            <li style={{ marginBottom: '0.5rem' }}>
-              <strong>Iluminación de emergencia: </strong>
-              Es un medio de iluminación secundaria que proporciona
-              iluminación, cuando la fuente de alimentación para la iluminación normal falla. El Objetivo
-              básico de un Sistema de Iluminación de Emergencia es permitir la evacuación segura de
-              lugares en que transiten o permanezcan personas.
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      {/* Sección de información adicional */}
-      <section style={{
-        maxWidth: '800px',
-        margin: '3rem auto',
-        textAlign: 'center',
-        padding: '2rem',
-        backgroundColor: '#fffbe6',
-        borderRadius: '10px'
-      }}>
-        <h3 style={{ color: '#181760', marginBottom: '1rem' }}>
-          ¿Necesitas más información sobre el Plan de Seguridad Integral?
-        </h3>
-        <div style={{ textAlign: 'center', marginBottom: '1.5rem' }}>
-          <a
-            href={`${import.meta.env.BASE_URL}docs/reglamentos/reglamentos.pdf`}
-            download
-            className="btn-primary"
-            style={{ display: 'inline-block', textDecoration: 'none', padding: '0.8rem 1.5rem' }}
-            onMouseOver={(e) => (e.target.style.backgroundColor = '#FFD700')}
-            onMouseOut={(e) => (e.target.style.backgroundColor = '#181760')}
+        {/* OBJETIVOS */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Card
+            title="Objetivo General"
+            className="bg-slate-300 text-black border-none shadow-xl"
           >
-            📄 Descargar RICE (PDF)
-          </a>
-        </div>
-      </section>
-      <div>
+            <ul className="space-y-4 text-sm opacity-90">
+              <li className="flex gap-3">
+                <span className="shrink-0 text-secondary">•</span>
+                Generar en la comunidad escolar una cultura preventiva con
+                responsabilidad colectiva.
+              </li>
+              <li className="flex gap-3">
+                <span className="shrink-0 text-secondary">•</span>
+                Proporcionar un ambiente de seguridad integral durante las
+                actividades académicas.
+              </li>
+            </ul>
+          </Card>
 
+          <Card
+            title="Objetivos Específicos"
+            className="bg-slate-200 text-black border-none shadow-xl"
+          >
+            <ul className="space-y-4 text-sm opacity-90">
+              <li className="flex gap-3">
+                <span className="shrink-0 text-primary">•</span>
+                Actualizar y evaluar procedimientos de evacuación ante
+                emergencias.
+              </li>
+              <li className="flex gap-3">
+                <span className="shrink-0 text-primary">•</span>
+                Fomentar actitudes de autoprotección y autocuidado en el vivir
+                diario.
+              </li>
+            </ul>
+          </Card>
+        </div>
+
+        {/* DEFINICIONES */}
+        <Section spacing="py-0">
+          <h2 className="text-primary text-2xl font-bold mb-8 text-center italic">
+            CONCEPTOS CLAVE
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {definiciones.map((def, i) => (
+              <Card
+                key={i}
+                className="hover:shadow-md transition-shadow h-full"
+              >
+                <h4 className="font-bold text-primary mb-2 uppercase text-xs tracking-wider">
+                  {def.term}
+                </h4>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {def.desc}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </Section>
+
+        {/* RECURSOS Y DESCARGA */}
+        <Card className="bg-yellow-50/50 border-yellow-100 text-center py-12">
+          <h3 className="text-primary font-bold text-xl mb-6">
+            Documentación Completa
+          </h3>
+          <div className="flex flex-col items-center gap-6">
+            <a
+              href={`${import.meta.env.BASE_URL}docs/reglamentos/reglamentos.pdf`}
+              download
+              className="flex items-center gap-3 px-8 py-3 bg-primary text-white rounded-full font-bold shadow-lg hover:bg-accent hover:scale-105 transition-all duration-300"
+            >
+              <FaFilePdf className="text-xl" /> Descargar RICE (PDF)
+            </a>
+            <p className="text-xs text-gray-400 max-w-sm italic">
+              Contiene todos los protocolos de seguridad y convivencia
+              actualizados al año escolar vigente.
+            </p>
+            <div className="pt-4 border-t border-yellow-200 w-full max-w-xs">
+              <button
+                onClick={() => navigate("/reglamentos")}
+                className="text-primary font-bold text-sm hover:underline"
+              >
+                ← Volver a Regulaciones
+              </button>
+            </div>
+          </div>
+        </Card>
       </div>
-    </div>
+    </PageLayout>
   );
 };
 
-export default LeyTea;
+export default PlanSeguridad;

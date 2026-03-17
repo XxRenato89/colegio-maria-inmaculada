@@ -1,134 +1,126 @@
-import React from 'react';
+import { FaMobileScreenButton, FaGlobe } from "react-icons/fa6";
+import { useNavigate } from "react-router-dom";
 import Botones from "../components/Botones";
-import { useNavigate } from 'react-router-dom';
-import PageHero from '../components/PageHero';
-import CTA from '../components/CTA';
-import BotonContacto from '../components/BotonContacto';
-import '../App.css';
+import BotonContacto from "../components/BotonContacto";
+import CTA from "../components/CTA";
+import "../App.css";
+
+import PageLayout from "../components/PageLayout";
+import Section from "../components/Section";
+import Card from "../components/Card";
+import SectionHero from "../components/SectionHero";
 
 const Appoderados = () => {
   const navigate = useNavigate();
 
   return (
-    <div style={{
-      backgroundColor: '#ffffff',
-      minHeight: '100vh',
-      padding: '2rem',
-      fontFamily: 'Arial, sans-serif',
-      color: '#333',
-      lineHeight: '1.6'
-    }}>
-
+    <PageLayout title="Appoderado">
       {/* HERO */}
-      <PageHero
+      <SectionHero
+        pill={
+          <span className="flex items-center gap-2">
+            <FaMobileScreenButton /> Comunicación
+          </span>
+        }
         title="¿Qué es Appoderado?"
         subtitle="Una aplicación escolar pensada para padres y apoderados para seguir la vida académica de sus hijos de forma simple, segura y actualizada."
       />
 
-      {/* TUTORIAL DE ACCESO */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '1.5rem auto 2.5rem',
-        backgroundColor: '#f9f9f9',
-        padding: '1.75rem',
-        borderRadius: '12px',
-        boxShadow: '0 6px 16px rgba(0,0,0,0.06)'
-      }}>
-        <h2 style={{
-          color: '#181760',
-          marginBottom: '1rem',
-          textAlign: 'center'
-        }}>
-          ¿Cómo ingresar por primera vez?
-        </h2>
+      {/* CONTENIDO */}
+      <div className="max-w-[900px] mx-auto mt-12 pb-16 space-y-12">
+        {/* TUTORIAL DE ACCESO */}
+        <Section spacing="py-0">
+          <Card
+            title="¿Cómo ingresar por primera vez?"
+            className="bg-gray-50 border-gray-100 shadow-md"
+          >
+            <ol className="mt-4 space-y-4 text-gray-700 text-lg">
+              <li className="flex gap-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold shrink-0 shadow-sm border border-white/20">
+                  1
+                </span>
+                <span>
+                  Ingresar el{" "}
+                  <strong className="text-primary">RUT del estudiante</strong>.
+                </span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold shrink-0 shadow-sm border border-white/20">
+                  2
+                </span>
+                <span>
+                  Digitar la{" "}
+                  <strong className="text-primary">
+                    contraseña provisoria: 0000
+                  </strong>
+                  .
+                </span>
+              </li>
+              <li className="flex gap-4">
+                <span className="flex items-center justify-center w-8 h-8 rounded-full bg-primary text-white font-bold shrink-0 shadow-sm border border-white/20">
+                  3
+                </span>
+                <span>
+                  Presionar <strong className="text-primary">Ingresar</strong>{" "}
+                  para acceder a la plataforma.
+                </span>
+              </li>
+            </ol>
+          </Card>
+        </Section>
 
-        <ol style={{
-          maxWidth: '700px',
-          margin: '0 auto',
-          paddingLeft: '1.2rem',
-          fontSize: '1.05rem'
-        }}>
-          <li style={{ marginBottom: '0.6rem' }}>
-            Ingresar el <strong>RUT del estudiante</strong>.
-          </li>
-          <li style={{ marginBottom: '0.6rem' }}>
-            Digitar la <strong>contraseña provisoria: 0000</strong>.
-          </li>
-          <li>
-            Presionar <strong>Ingresar</strong> para acceder a la plataforma.
-          </li>
-        </ol>
-      </section>
-
-      {/* DESCARGA */}
-      <section>
-        <h2 style={{ color: '#181760', marginBottom: '1rem', textAlign: 'center' }}>
-          Descarga aquí
-        </h2>
-      </section>
-
-      {/* BOTONES STORE */}
-      <section style={{ textAlign: 'center', marginBottom: '2rem' }}>
-        <Botones />
-      </section>
-
-      {/* ACCESO WEB */}
-      <section style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <BotonContacto
-          onClick={() =>
-            window.open('https://appoderado.cl/sistema/index-login', '_blank')
-          }
-        >
-          Acceso Appoderado.com
-        </BotonContacto>
-      </section>
-
-      {/* VIDEO */}
-      <section style={{
-        maxWidth: '900px',
-        margin: '0 auto',
-        backgroundColor: '#f9f9f9',
-        padding: '2rem',
-        borderRadius: '10px',
-        boxShadow: '0 4px 8px rgba(0,0,0,0.05)'
-      }}>
-        <h2 style={{ color: '#181760', marginBottom: '1rem' }}>
-          Appoderado
-        </h2>
-
-        <div style={{ margin: '2rem 0' }}>
-          <div style={{
-            position: 'relative',
-            paddingBottom: '56.25%',
-            height: 0,
-            overflow: 'hidden'
-          }}>
-            <iframe
-              src="https://www.youtube.com/embed/9EMF7cYkgoM"
-              title="Tutorial Appoderado"
-              allowFullScreen
-              style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                width: '100%',
-                height: '100%',
-                border: 'none',
-                borderRadius: '8px'
-              }}
-            />
+        {/* DESCARGA */}
+        <Section spacing="py-0" className="text-center">
+          <h2 className="text-primary text-2xl font-bold mb-6">
+            Descarga aquí
+          </h2>
+          <div className="flex justify-center transform scale-110 md:scale-125">
+            <Botones />
           </div>
-        </div>
-      </section>
+        </Section>
 
-      {/* CTA */}
-      <CTA
-        title="¿Necesitas más información?"
-        text="Si tienes dudas sobre la instalación o el uso de Appoderado, contáctanos. Te orientamos de forma clara y directa."
-        primaryLabel="Ir a Contacto"
-        onPrimaryClick={() => navigate('/contacto')}
-      />
-    </div>
+        {/* ACCESO WEB */}
+        <Section spacing="py-0" className="text-center">
+          <BotonContacto
+            onClick={() =>
+              window.open("https://appoderado.cl/sistema/index-login", "_blank")
+            }
+          >
+            <span className="flex items-center gap-2">
+              <FaGlobe /> Acceso Appoderado.com
+            </span>
+          </BotonContacto>
+        </Section>
+
+        {/* VIDEO */}
+        <Section spacing="py-0">
+          <Card title="Tutorial Appoderado" className="overflow-hidden p-0">
+            <div className="p-6">
+              <p className="text-gray-600 mb-6">
+                Aprende a usar todas las funciones de la aplicación con este
+                video explicativo.
+              </p>
+              <div className="relative aspect-video rounded-xl overflow-hidden shadow-lg border border-gray-200">
+                <iframe
+                  src="https://www.youtube.com/embed/9EMF7cYkgoM"
+                  title="Tutorial Appoderado"
+                  allowFullScreen
+                  className="absolute inset-0 w-full h-full border-none"
+                />
+              </div>
+            </div>
+          </Card>
+        </Section>
+
+        {/* CTA */}
+        <CTA
+          title="¿Necesitas más información?"
+          text="Si tienes dudas sobre la instalación o el uso de Appoderado, contáctanos. Te orientamos de forma clara y directa."
+          primaryLabel="Ir a Contacto"
+          onPrimaryClick={() => navigate("/contacto")}
+        />
+      </div>
+    </PageLayout>
   );
 };
 
