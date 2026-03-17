@@ -59,7 +59,10 @@ const PromoModal = () => {
             </p>
 
             <button
-              onClick={closeModal}
+              onClick={() => {
+                navigate("/postulaciones");
+                closeModal();
+              }}
               className="w-full bg-primary hover:bg-secondary text-white font-bold py-4 px-6 rounded-xl transition-all transform hover:scale-[1.02] active:scale-95 shadow-md"
             >
               Ver más información
