@@ -1,12 +1,3 @@
-/**
- * Componente Carousel
- *
- * Un carrusel de imágenes responsivo y de alto impacto con rotación automática.
- * Diseñado para la sección hero de la página de inicio.
- *
- * @param {Object[]} images - Array de objetos de diapositiva { image, title, subtitle, buttonLabel, buttonPath }
- * @param {number} [interval=5000] - Tiempo en ms entre transiciones de diapositivas
- */
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -16,14 +7,12 @@ const Carousel = ({ images, interval = 5000 }) => {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
   const [displayedImages, setDisplayedImages] = useState(images);
 
-  // Manejar el cambio de tamaño de la ventana
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  // Filtrar imágenes para móvil (máximo 5)
   useEffect(() => {
     if (!images) return;
     if (isMobile) {
@@ -31,10 +20,9 @@ const Carousel = ({ images, interval = 5000 }) => {
     } else {
       setDisplayedImages(images);
     }
-    setCurrentIndex(0); // Reiniciar al primer slide cuando cambia el set de imágenes
+    setCurrentIndex(0);
   }, [images, isMobile]);
 
-  // Lógica de rotación automática
   useEffect(() => {
     if (!displayedImages || displayedImages.length === 0) return;
 
@@ -46,41 +34,28 @@ const Carousel = ({ images, interval = 5000 }) => {
   }, [displayedImages, interval]);
 
   return (
-    <div className="w-full h-[300px] sm:h-[500px] lg:h-[600px] overflow-hidden relative rounded-xl shadow-2xl bg-primary">
-      {/* Track del Slider: usa transform para transiciones suaves aceleradas por hardware */}
+    <div className="w-full h-[450px] sm:h-[500px] lg:h-[600px] overflow-hidden relative bg-primary">
       <div
-        className="flex h-full transition-transform duration-700 cubic-bezier(0.4, 0, 0.2, 1)"
-        style={{
-          width: `${displayedImages.length * 100}%`,
-          transform: `translateX(-${currentIndex * (100 / displayedImages.length)}%)`,
-        }}
+        className="flex h-full transition-transform duration-700 ease-in-out"
+        style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {displayedImages.map((slide, idx) => (
-          <div
-            key={idx}
-            className="h-full relative shrink-0"
-            style={{ width: `${100 / displayedImages.length}%` }}
-          >
-            {/* Imagen de fondo */}
+          <div key={idx} className="min-w-full h-full relative">
             <img
               src={slide.image || slide}
               alt={slide.title || `Slide ${idx + 1}`}
-              className="w-full h-full object-cover block opacity-90"
+              className="w-full h-full object-cover block"
             />
 
-            {/* Superposición de Contenido: usa un degradado para legibilidad en diferentes imágenes */}
             <div className="absolute inset-0 bg-black/40 flex flex-col justify-center items-center text-white text-center p-4 sm:p-12">
               <h1 className="text-xl sm:text-4xl lg:text-5xl font-bold mb-2 sm:mb-4 drop-shadow-md max-w-[90%] leading-tight">
-                {slide.title ||
-                  "Bienvenidos al Colegio María Inmaculada Los Ángeles"}
+                {slide.title || "Bienvenidos al Colegio María Inmaculada Los Ángeles"}
               </h1>
 
               <p className="text-xs sm:text-lg lg:text-xl mb-4 sm:mb-8 drop-shadow-sm max-w-[85%] opacity-90">
-                {slide.subtitle ||
-                  "Formando personas íntegras con valores cristianos"}
+                {slide.subtitle || "Formando personas íntegras con valores cristianos"}
               </p>
 
-              {/* Botón de Llamada a la Acción Dinámico */}
               {slide.buttonLabel && (
                 <button
                   onClick={() => navigate(slide.buttonPath || "/postulaciones")}
@@ -104,7 +79,6 @@ const Carousel = ({ images, interval = 5000 }) => {
         ))}
       </div>
 
-      {/* Indicadores de diapositiva / Puntos */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-3">
         {displayedImages.map((_, i) => (
           <button
