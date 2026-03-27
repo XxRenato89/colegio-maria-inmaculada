@@ -124,10 +124,10 @@ function App() {
         </div>
       </div>
 
-      {/* ✅ BOTÓN WHATSAPP GLOBAL */}
+      {/* BOTÓN WHATSAPP GLOBAL */}
       <WhatsAppButton />
 
-      {/* ✅ MODAL PROMOCIONAL */}
+      {/* MODAL PROMOCIONAL */}
       <PromoModal />
     </Router>
   );
