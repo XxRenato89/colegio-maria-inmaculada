@@ -27,7 +27,7 @@ const Home = () => {
       description="Bienvenidos al sitio oficial del Colegio María Inmaculada de Los Ángeles. Conoce nuestro proyecto educativo, procesos de postulación y actividades institucionales."
     >
       {/* Carrusel Principal */}
-      <section className="p-4 md:p-8">
+      <section className="md:p-8">
         <Carousel images={carouselImages} interval={5000} />
       </section>
 

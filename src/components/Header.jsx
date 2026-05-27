@@ -32,18 +32,18 @@ const Header = () => {
         </Link>
 
         {/* INFO CONTACTO - Oculto en móbiles pequeños por espacio */}
-        <div className="hidden sm:flex flex-col text-[0.85rem] leading-[1.4] text-right">
-          <div>
-            <strong>Dirección:</strong> Av. Las Quintas N°188
-          </div>
-
-          <div>
-            <strong>Tel:</strong> (43) 2658332
-          </div>
-
-          <div>
-            <strong>WhatsApp:</strong> +56 9 3931 0070
-          </div>
+        <div className="hidden sm:flex flex-col text-[0.85rem] leading-[1.4] text-right font-sans">
+          <ul>
+            <li>
+              <strong>Dirección:</strong> Av. Las Quintas N°188
+              <br />
+              <strong>Tel:</strong> (43) 2658332
+              <br />
+              <a className="text-white" href="https://wa.me/56939310070" target="_blank" rel="noopener noreferrer">
+                <strong>WhatsApp:</strong> +56 9 3931 0070
+              </a>
+            </li>
+          </ul>
         </div>
 
       </div>

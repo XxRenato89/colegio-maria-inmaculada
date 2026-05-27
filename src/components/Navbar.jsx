@@ -61,9 +61,8 @@ const Navbar = () => {
 
         {/* CONTENEDOR DE ENLACES CON SCROLL Y LÍMITE DE ALTURA EN MÓVIL */}
         <div
-          className={`${
-            mobileOpen ? "flex" : "hidden"
-          } md:flex flex-col md:flex-row items-start md:items-center w-full absolute md:static top-full left-0 bg-white md:bg-transparent shadow-xl md:shadow-none transition-all duration-300 
+          className={`${mobileOpen ? "flex" : "hidden"
+            } md:flex flex-col md:flex-row items-start md:items-center w-full absolute md:static top-full left-0 bg-white md:bg-transparent shadow-xl md:shadow-none transition-all duration-300 
           max-h-[60vh] md:max-h-none overflow-y-auto md:overflow-visible`}
         >
           {mainNav.map((item) => (

@@ -83,11 +83,10 @@ export default function PromoModal() {
                        bg-radial from-white via-[#e2efff] to-[#c4ddff]
                        shadow-[0_30px_100px_rgba(0,0,0,0.8),0_0_0_2px_rgba(201,162,39,0.5)]
                        transition-all duration-500 cubic-bezier(0.34,1.56,0.64,1)
-                       ${
-                         visible
-                           ? "scale-100 translate-y-0 opacity-100"
-                           : "scale-85 translate-y-10 opacity-0"
-                       }`}
+                       ${visible
+                ? "scale-100 translate-y-0 opacity-100"
+                : "scale-85 translate-y-10 opacity-0"
+              }`}
           >
             <div className="h-1.5 bg-linear-to-r from-[#C9A227] via-modal to-[#C9A227]" />
 
@@ -100,9 +99,9 @@ export default function PromoModal() {
               ×
             </button>
 
-            <div className="relative z-1 text-center pt-8 px-7">
+            <div className="relative z-1 text-center pt-8 pb-10">
               <div
-                className="w-[84px] h-[84px] rounded-full bg-white mx-auto mb-3 
+                className="w-[84px] h-[84px] rounded-full bg-white mx-auto mb-3
                            flex items-center justify-center shadow-[0_6px_20px_rgba(37,99,235,0.2)] 
                            border-4 border-modal p-1"
               >
@@ -122,7 +121,7 @@ export default function PromoModal() {
                 LOS ÁNGELES
               </p>
               <div
-                className="text-4xl font-black text-primary mb-3.5 tracking-tight 
+                className="text-3xl md:text-5xl font-black text-primary mb-3.5 tracking-tight 
                            drop-shadow-[2px_2px_0_rgba(255,255,255,0.8)] 
                            shadow-modal/30"
               >
@@ -157,7 +156,7 @@ export default function PromoModal() {
                     className="bg-linear-to-br from-primary to-secondary 
                                rounded-b-lg py-2 px-4 shadow-[0_4px_12px_rgba(24,23,96,0.3)]"
                   >
-                    <p className="m-0 text-xl font-black text-modal tracking-widest drop-shadow-md">
+                    <p className="m-0 sm:text-sm md:text-xl font-black text-modal drop-shadow-md">
                       ★ 2026 – 2027 ★
                     </p>
                   </div>

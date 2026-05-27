@@ -48,10 +48,12 @@ const MaterialesDynamic = () => {
               Lista de Útiles
             </h2>
 
-            <div className="flex flex-col md:flex-row gap-6 justify-center items-center py-6 bg-gray-50 rounded-3xl border border-gray-100">
+            <div className="flex flex-col md:flex-row gap-6 justify-center items-center py-6 bg-white rounded-3xl border border-gray-100 shadow-sm mb-8">
               <a
                 href={`${import.meta.env.BASE_URL}${data.pdf.replace(/^\//, "")}`}
                 download
+                target="_blank"
+                rel="noopener noreferrer"
                 className="flex items-center gap-3 px-8 py-3 bg-primary text-white rounded-full font-bold shadow-lg hover:bg-accent hover:scale-105 transition-all duration-300"
               >
                 <FaFilePdf className="text-xl" /> Descargar lista de útiles (PDF)

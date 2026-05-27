@@ -12,6 +12,7 @@ import img11 from '../images/carousel/img11.webp';
 import img12 from '../images/carousel/img12.webp';
 import img13 from '../images/carousel/img13.webp';
 import img14 from '../images/carousel/img14.webp';
+import craImg from '../images/img_CRA_noticias/cuentacuentos/cuentos1.webp';
 
 export const carouselImages = [
   {
@@ -20,6 +21,13 @@ export const carouselImages = [
     subtitle: "Formando personas íntegras con valores cristianos",
     buttonLabel: "Postulaciones Abiertas",
     buttonPath: "/postulaciones"
+  },
+  {
+    image: craImg,
+    title: "Noticias de la Biblioteca CRA",
+    subtitle: "Descubre las últimas actividades de nuestro Centro de Recursos para el Aprendizaje",
+    buttonLabel: "Ver Noticias CRA",
+    buttonPath: "/cra"
   },
   {
     image: img3,
