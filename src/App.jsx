@@ -71,8 +71,8 @@ function App() {
 
       {/* TOPBAR FIJA */}
       <div className="fixed top-0 left-0 right-0 z-1000">
-        <div className="max-w-[1200px] mx-auto px-4">
-          <div className="bg-white rounded-b-xl shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-visible">
+        <div className="max-w-[1200px] mx-auto px-0 md:px-4">
+          <div className="bg-white rounded-none md:rounded-b-xl shadow-none md:shadow-[0_4px_20px_rgba(0,0,0,0.1)] overflow-visible">
             <Header />
             <Navbar />
           </div>
@@ -84,8 +84,8 @@ function App() {
         className="bg-cover bg-fixed bg-center min-h-screen pt-[130px] font-sans flex flex-col"
         style={{ backgroundImage: `url(${Fondo})` }}
       >
-        <div className="max-w-[1200px] mx-auto w-full p-6 px-4 grow flex flex-col">
-          <div className="bg-white rounded-xl overflow-hidden shadow-[0_10px_30px_rgba(0,0,0,0.08)] grow flex flex-col">
+        <div className="max-w-[1200px] mx-auto w-full p-0 md:p-6 md:px-4 grow flex flex-col">
+          <div className="bg-white rounded-none md:rounded-xl overflow-hidden shadow-none md:shadow-[0_10px_30px_rgba(0,0,0,0.08)] grow flex flex-col">
             <Suspense
               fallback={
                 <div className="p-8 text-center text-primary">Cargando...</div>

@@ -24,7 +24,7 @@ const SectionHero = ({
   className
 }) => {
   return (
-    <div className={`relative w-full rounded-2xl overflow-hidden shadow-2xl bg-primary border border-primary/20 transition-all duration-300 ${className}`}>
+    <div className={`relative w-full rounded-none md:rounded-2xl overflow-hidden shadow-none md:shadow-2xl bg-primary border-b border-primary/20 md:border transition-all duration-300 ${className}`}>
       {/* Dynamic Background Overlay */}
       <div className="absolute inset-0 z-0 bg-linear-to-br from-primary via-primary/95 to-secondary/80" />
       <div className="absolute inset-0 z-0 opacity-30" style={{

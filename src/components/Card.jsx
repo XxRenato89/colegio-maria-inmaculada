@@ -65,7 +65,7 @@ const Card = ({
   if (variant === "profile") {
     return (
       <article
-        className={`${baseStyles} ${hoverStyles} p-6 flex flex-col sm:flex-row gap-6 items-start ${className}`}
+        className={`${baseStyles} ${hoverStyles} p-4 sm:p-6 flex flex-col sm:flex-row gap-6 items-start ${className}`}
         onClick={onClick}
       >
         {image ? (
@@ -92,7 +92,7 @@ const Card = ({
 
   return (
     <div
-      className={`${baseStyles} ${hoverStyles} p-6 ${className}`}
+      className={`${baseStyles} ${hoverStyles} p-4 sm:p-6 ${className}`}
       onClick={onClick}
     >
       {icon && (

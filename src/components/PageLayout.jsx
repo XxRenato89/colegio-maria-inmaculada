@@ -17,9 +17,12 @@ const PageLayout = ({ children, className = "", title, description }) => {
   const defaultDescription =
     "Colegio María Inmaculada de Los Ángeles. Una institución educativa comprometida con la formación integral, valores cristianos y excelencia académica.";
 
+  const hasPadding = className.split(" ").some(c => c.startsWith("p-") || c.startsWith("px-") || c.startsWith("py-"));
+  const paddingClass = hasPadding ? "" : "p-4 md:p-8";
+
   return (
     <div
-      className={`bg-white min-h-screen p-4 md:p-8 font-sans text-gray-800 leading-relaxed ${className}`}
+      className={`bg-white min-h-screen font-sans text-gray-800 leading-relaxed ${paddingClass} ${className}`}
     >
       <Helmet>
         <title>{fullTitle}</title>

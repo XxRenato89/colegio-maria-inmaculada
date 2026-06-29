@@ -9,13 +9,13 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import { carouselImages } from "../data/carouselImages";
-import "../App.css";
 
 import Section from "../components/Section";
 import Card from "../components/Card";
 import BotonContacto from "../components/BotonContacto";
 
 import PageLayout from "../components/PageLayout";
+import NewsSection from "../components/NewsSection";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -82,7 +82,11 @@ const Home = () => {
           </BotonContacto>
         </div>
       </Section>
+
+      {/* Noticias Recientes */}
+      <NewsSection />
     </PageLayout>
+
   );
 };
 

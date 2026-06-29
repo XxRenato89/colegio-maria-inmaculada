@@ -29,12 +29,12 @@ const InlineImageCarousel = ({ images = [], altPrefix = "Imagen" }) => {
 
   return (
     <div className="mt-4">
-      <div className="relative w-full rounded-2xl overflow-hidden border border-gray-100 shadow-xl group aspect-video sm:aspect-auto">
-        {/* Imagen responsiva con alturas dinámicas */}
+      <div className="relative w-full rounded-none md:rounded-2xl overflow-hidden border-x-0 md:border border-gray-100 shadow-none md:shadow-xl group aspect-video bg-white">
+        {/* Imagen responsiva con posicionamiento absoluto para evitar líneas grises */}
         <img
           src={images[idx]}
           alt={`${altPrefix} ${idx + 1}`}
-          className="w-full h-full min-h-[220px] md:h-[420px] object-cover transition-transform duration-700 group-hover:scale-105"
+          className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 
         {/* Botones de Navegación: Visibles al pasar el mouse o al tocar */}
@@ -88,6 +88,20 @@ const NewsHeader = ({ category, date }) => (
   </div>
 );
 
+const slugify = (text) => {
+  if (!text) return "";
+  return text
+    .toString()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, "-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-")
+    .replace(/^-+/, "")
+    .replace(/-+$/, "");
+};
+
 const CRA = () => {
   const navigate = useNavigate();
 
@@ -112,22 +126,27 @@ const CRA = () => {
 
         {/* NOTICIAS DETALLADAS */}
         <div className="grid grid-cols-1 gap-12">
-          {craData.noticiasDetalladas.map((noticia, index) => (
-            <Card key={index} className="hover:shadow-xl transition-shadow border-none bg-gray-50/30">
-              <NewsHeader category={noticia.category} date={noticia.date} />
-              <h2 className="text-primary text-2xl md:text-3xl font-bold mb-4 leading-tight">
-                {noticia.title}
-              </h2>
-              <p
-                className="text-gray-600 text-lg leading-relaxed mb-8"
-                dangerouslySetInnerHTML={{ __html: noticia.description }}
-              />
-              <InlineImageCarousel
-                images={noticia.images}
-                altPrefix={noticia.altPrefix}
-              />
-            </Card>
-          ))}
+          {craData.noticiasDetalladas.map((noticia, index) => {
+            const cardId = slugify(noticia.title);
+            return (
+              <div key={index} id={cardId} className="scroll-mt-[150px]">
+                <Card className="hover:shadow-xl transition-shadow border-none bg-gray-50/30">
+                  <NewsHeader category={noticia.category} date={noticia.date} />
+                  <h2 className="text-primary text-2xl md:text-3xl font-bold mb-4 leading-tight">
+                    {noticia.title}
+                  </h2>
+                  <p
+                    className="text-gray-600 text-lg leading-relaxed mb-8"
+                    dangerouslySetInnerHTML={{ __html: noticia.description }}
+                  />
+                  <InlineImageCarousel
+                    images={noticia.images}
+                    altPrefix={noticia.altPrefix}
+                  />
+                </Card>
+              </div>
+            );
+          })}
         </div>
 
         {/* INFO DEL PROGRAMA */}

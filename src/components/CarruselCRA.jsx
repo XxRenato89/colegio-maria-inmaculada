@@ -26,7 +26,7 @@ const NewsCarousel = ({ items = [], interval = 5000 }) => {
   if (!items.length) return null;
 
   return (
-    <div className="w-full overflow-hidden rounded-[26px] border border-gray-100 shadow-2xl bg-white min-h-[600px] flex flex-col">
+    <div className="w-full overflow-hidden rounded-none md:rounded-[26px] border-x-0 md:border border-gray-100 shadow-none md:shadow-2xl bg-white min-h-[600px] flex flex-col">
       {/* Track del Slider: contiene todas las diapositivas de noticias en una fila horizontal */}
       <div
         className="flex transition-transform duration-700 ease-in-out grow"

@@ -31,7 +31,6 @@ import mates3 from "../images/img_CRA_noticias/matematicas/mates3.jpeg";
 import mates4 from "../images/img_CRA_noticias/matematicas/mates4.jpeg";
 import mates5 from "../images/img_CRA_noticias/matematicas/mates5.jpeg";
 import mates6 from "../images/img_CRA_noticias/matematicas/mates6.jpeg";
-import mates7 from "../images/img_CRA_noticias/matematicas/mates7.jpeg";
 
 // --- Evento: Ludoteca --- 
 import ludoteca1 from "../images/img_CRA_noticias/ludoteca/ludo1.jpeg";
@@ -46,14 +45,18 @@ import ludoteca9 from "../images/img_CRA_noticias/ludoteca/ludo9.jpeg";
 import ludoteca10 from "../images/img_CRA_noticias/ludoteca/ludo10.jpeg";
 import ludoteca11 from "../images/img_CRA_noticias/ludoteca/ludo11.jpeg";
 
+// --- Evento: Laboratorio Creativo ---
+import laboratorio1 from "../images/img_CRA_noticias/laboratorio/laboratorio1.png";
+
 // =========================================================================
 // 2. COLECCIONES DE IMÁGENES POR EVENTO
 // =========================================================================
 const imagenesCuentacuentos = [cuentos1, cuentos2, cuentos3, cuentos4, cuentos5];
 const imagenesDebate = [debate1, debate2, debate3, debate4, debate5];
 const imagenesApoderado = [apo1, apo2, apo3, apo4];
-const imagenesMates = [mates1, mates2, mates3, mates4, mates5, mates6, mates7];
+const imagenesMates = [mates1, mates2, mates3, mates4, mates5, mates6];
 const imagenesLudoteca = [ludoteca1, ludoteca2, ludoteca3, ludoteca4, ludoteca5, ludoteca6, ludoteca7, ludoteca8, ludoteca9, ludoteca10, ludoteca11];
+const imagenesLaboratorio = [laboratorio1];
 
 // =========================================================================
 // 3. ESTRUCTURA DE DATOS PRINCIPAL DE LA BIBLIOTECA CRA
@@ -66,6 +69,12 @@ export const craData = {
 
   // Carousel News items
   newsItems: [
+    {
+      title: "Inauguración de nuestro nuevo Laboratorio Creativo",
+      excerpt: "Un espacio innovador equipado con computadores de alto estándar que permitirá fortalecer el aprendizaje, la creatividad y la investigación.",
+      image: laboratorio1,
+      href: ""
+    },
     {
       title: "Jornada de cuentacuentos en biblioteca",
       excerpt: "Docentes interpretaron el relato El almohadón de plumas en una puesta en escena expresiva.",
@@ -94,6 +103,14 @@ export const craData = {
 
   // Detailed News Articles
   noticiasDetalladas: [
+    {
+      category: "Noticia CRA",
+      date: "28/06/2026 • Comunidad",
+      title: "Inauguración de nuestro nuevo Laboratorio Creativo",
+      description: '¡Hoy vivimos un hito para nuestra comunidad educativa!<br/><br/>Inauguramos oficialmente nuestro nuevo <strong class="text-primary">Laboratorio Creativo</strong>, un espacio innovador equipado con <strong class="text-primary">computadores de alto estándar</strong> que permitirá fortalecer el aprendizaje, la creatividad, la investigación y el desarrollo de habilidades esenciales para el futuro.<br/><br/>Esta significativa ceremonia fue liderada por nuestro <strong class="text-primary">Centro General de Estudiantes</strong>, acompañado por una comisión representativa de cada curso desde 6° Básico hasta IV° Medio, reafirmando el importante rol que tienen nuestros estudiantes en la construcción de una comunidad participativa y comprometida.<br/><br/>Uno de los aspectos más especiales de este proyecto fue que el nombre "Laboratorio Creativo" fue elegido por los propios estudiantes a través de un concurso en el que participaron jóvenes desde 7° Básico hasta IV° Medio, permitiéndoles ser protagonistas de este nuevo espacio desde sus inicios.<br/><br/>Creemos que educar también significa generar oportunidades para crear, innovar y soñar. Hoy no solo inauguramos una sala equipada con tecnología de calidad; inauguramos un lugar donde surgirán nuevas ideas, proyectos, aprendizajes y desafíos que prepararán a nuestros estudiantes para el mundo que les espera.<br/><br/>💡💻 Gracias a todos quienes hicieron posible este importante avance. ¡Sigamos construyendo juntos una educación que inspire, motive y transforme vidas!',
+      images: imagenesLaboratorio,
+      altPrefix: "Laboratorio Creativo"
+    },
     {
       category: "Noticia CRA",
       date: "23/09/2025 • Biblioteca",
