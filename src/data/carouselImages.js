@@ -12,8 +12,7 @@ import img11 from '../images/carousel/img11.webp';
 import img12 from '../images/carousel/img12.webp';
 import img13 from '../images/carousel/img13.webp';
 import img14 from '../images/carousel/img14.webp';
-import craImg from '../images/img_CRA_noticias/cuentacuentos/cuentos1.webp';
-import laboratorioImg from '../images/img_CRA_noticias/laboratorio/laboratorio1.png';
+import { craData } from './craData';
 
 const letterboxedImages = new Set([img1, img2, img3, img4, img5, img6, img7, img8, img9, img10, img11, img12, img13, img14]);
 
@@ -26,14 +25,14 @@ const rawCarouselImages = [
     buttonPath: "/postulaciones"
   },
   {
-    image: laboratorioImg,
+    image: craData.newsItems[0].image,
     title: "Inauguración de nuestro nuevo Laboratorio Creativo",
     subtitle: "Un espacio tecnológico e innovador diseñado para el futuro y la creatividad de nuestros estudiantes",
     buttonLabel: "Ver Detalles",
     buttonPath: "/cra#inauguracion-de-nuestro-nuevo-laboratorio-creativo"
   },
   {
-    image: craImg,
+    image: craData.newsItems[2].image,
     title: "Noticias de la Biblioteca CRA",
     subtitle: "Descubre las últimas actividades de nuestro Centro de Recursos para el Aprendizaje",
     buttonLabel: "Ver Noticias CRA",

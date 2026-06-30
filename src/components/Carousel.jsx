@@ -44,6 +44,7 @@ const Carousel = ({ images, interval = 5000 }) => {
             <img
               src={slide.image || slide}
               alt={slide.title || `Slide ${idx + 1}`}
+              loading={idx === 0 ? "eager" : "lazy"}
               className={`absolute inset-0 w-full h-full object-cover block transition-transform duration-700 ${slide.cropLetterbox ? "scale-125" : ""}`}
             />
 

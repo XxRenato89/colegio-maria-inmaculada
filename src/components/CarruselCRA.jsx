@@ -48,6 +48,7 @@ const NewsCarousel = ({ items = [], interval = 5000 }) => {
                 <img
                   src={n.image}
                   alt={n.title}
+                  loading="lazy"
                   className="w-full h-full object-cover block transition-transform duration-500 hover:scale-105"
                 />
               </div>

@@ -27,13 +27,25 @@ const InlineImageCarousel = ({ images = [], altPrefix = "Imagen" }) => {
   const prev = () => setIdx((p) => (p - 1 + images.length) % images.length);
   const next = () => setIdx((p) => (p + 1) % images.length);
 
+  const nextIdx = (idx + 1) % images.length;
+
   return (
     <div className="mt-4">
+      {/* Pre-cargar en caché la siguiente imagen para una navegación instantánea */}
+      {images.length > 1 && (
+        <img
+          src={images[nextIdx]}
+          alt=""
+          className="hidden"
+          aria-hidden="true"
+        />
+      )}
       <div className="relative w-full rounded-none md:rounded-2xl overflow-hidden border-x-0 md:border border-gray-100 shadow-none md:shadow-xl group aspect-video bg-white">
         {/* Imagen responsiva con posicionamiento absoluto para evitar líneas grises */}
         <img
           src={images[idx]}
           alt={`${altPrefix} ${idx + 1}`}
+          loading="lazy"
           className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
 

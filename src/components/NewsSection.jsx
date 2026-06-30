@@ -51,7 +51,7 @@ const NewsSection = () => {
           >
             <div className="relative h-[280px] sm:h-[340px] md:h-[360px] lg:h-[380px] bg-[#dde1f0] flex-shrink-0">
               {featured.image ? (
-                <img src={featured.image} alt={featured.title} className="w-full h-full object-cover" />
+                <img src={featured.image} alt={featured.title} loading="lazy" className="w-full h-full object-cover" />
               ) : (
                 <ImgPlaceholder className="h-full" />
               )}
@@ -77,7 +77,7 @@ const NewsSection = () => {
               </div>
             </div>
           </div>
-
+ 
           {/* Noticias secundarias apiladas */}
           <div className="flex flex-col gap-5">
             {rest.map((item) => (
@@ -88,7 +88,7 @@ const NewsSection = () => {
               >
                 <div className="relative w-[130px] md:w-[150px] flex-shrink-0 bg-[#dde1f0]">
                   {item.image ? (
-                    <img src={item.image} alt={item.title} className="w-full h-full object-cover" />
+                    <img src={item.image} alt={item.title} loading="lazy" className="w-full h-full object-cover" />
                   ) : (
                     <ImgPlaceholder className="h-full w-full" />
                   )}

@@ -1,62 +1,32 @@
 // src/data/craData.js
 
 // =========================================================================
-// 1. IMPORTACIÓN DE IMÁGENES DE EVENTOS (AGRUPADAS POR EVENTO)
+// 1. CARGA DINÁMICA DE IMÁGENES CON VITE
 // =========================================================================
+const allImages = import.meta.glob("../images/img_CRA_noticias/**/*.{png,jpg,jpeg,webp}", { eager: true, import: 'default' });
 
-// --- Evento: Jornada de Cuentacuentos ---
-import cuentos1 from "../images/img_CRA_noticias/cuentacuentos/cuentos1.webp";
-import cuentos2 from "../images/img_CRA_noticias/cuentacuentos/cuentos2.webp";
-import cuentos3 from "../images/img_CRA_noticias/cuentacuentos/cuentos3.webp";
-import cuentos4 from "../images/img_CRA_noticias/cuentacuentos/cuentos4.webp";
-import cuentos5 from "../images/img_CRA_noticias/cuentacuentos/cuentos5.webp";
-
-// --- Evento: Jornada de Debate y Conversatorio ---
-import debate1 from "../images/img_CRA_noticias/debate/debate1.webp";
-import debate2 from "../images/img_CRA_noticias/debate/debate2.webp";
-import debate3 from "../images/img_CRA_noticias/debate/debate3.webp";
-import debate4 from "../images/img_CRA_noticias/debate/debate4.webp";
-import debate5 from "../images/img_CRA_noticias/debate/debate5.webp";
-
-// --- Evento: Apoderada Presenta Cuentos ---
-import apo1 from "../images/img_CRA_noticias/apoderada/apo1.webp";
-import apo2 from "../images/img_CRA_noticias/apoderada/apo2.webp";
-import apo3 from "../images/img_CRA_noticias/apoderada/apo3.webp";
-import apo4 from "../images/img_CRA_noticias/apoderada/apo4.webp";
-
-// --- Evento: Semana de la Matemática ---
-import mates1 from "../images/img_CRA_noticias/matematicas/mates1.jpeg";
-import mates2 from "../images/img_CRA_noticias/matematicas/mates2.jpeg";
-import mates3 from "../images/img_CRA_noticias/matematicas/mates3.jpeg";
-import mates4 from "../images/img_CRA_noticias/matematicas/mates4.jpeg";
-import mates5 from "../images/img_CRA_noticias/matematicas/mates5.jpeg";
-import mates6 from "../images/img_CRA_noticias/matematicas/mates6.jpeg";
-
-// --- Evento: Ludoteca --- 
-import ludoteca1 from "../images/img_CRA_noticias/ludoteca/ludo1.jpeg";
-import ludoteca2 from "../images/img_CRA_noticias/ludoteca/ludo2.jpeg";
-import ludoteca3 from "../images/img_CRA_noticias/ludoteca/ludo3.jpeg";
-import ludoteca4 from "../images/img_CRA_noticias/ludoteca/ludo4.jpeg";
-import ludoteca5 from "../images/img_CRA_noticias/ludoteca/ludo5.jpeg";
-import ludoteca6 from "../images/img_CRA_noticias/ludoteca/ludo6.jpeg";
-import ludoteca7 from "../images/img_CRA_noticias/ludoteca/ludo7.jpeg";
-import ludoteca8 from "../images/img_CRA_noticias/ludoteca/ludo8.jpeg";
-import ludoteca9 from "../images/img_CRA_noticias/ludoteca/ludo9.jpeg";
-import ludoteca10 from "../images/img_CRA_noticias/ludoteca/ludo10.jpeg";
-import ludoteca11 from "../images/img_CRA_noticias/ludoteca/ludo11.jpeg";
-
-// --- Evento: Laboratorio Creativo ---
-import laboratorio1 from "../images/img_CRA_noticias/laboratorio/laboratorio1.png";
+/**
+ * Filtra las imágenes de una subcarpeta bajo src/images/img_CRA_noticias/
+ * y las ordena numéricamente de manera natural.
+ */
+const getImagesFromFolder = (folderName) => {
+  const folderPath = `../images/img_CRA_noticias/${folderName}/`;
+  return Object.keys(allImages)
+    .filter((key) => key.startsWith(folderPath))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true, sensitivity: 'base' }))
+    .map((key) => allImages[key]);
+};
 
 // =========================================================================
 // 2. COLECCIONES DE IMÁGENES POR EVENTO
 // =========================================================================
-const imagenesCuentacuentos = [cuentos1, cuentos2, cuentos3, cuentos4, cuentos5];
-const imagenesDebate = [debate1, debate2, debate3, debate4, debate5];
-const imagenesApoderado = [apo1, apo2, apo3, apo4];
-const imagenesMates = [mates1, mates2, mates3, mates4, mates5, mates6];
-const imagenesLudoteca = [ludoteca1, ludoteca2, ludoteca3, ludoteca4, ludoteca5, ludoteca6, ludoteca7, ludoteca8, ludoteca9, ludoteca10, ludoteca11];
-const imagenesLaboratorio = [laboratorio1];
+const imagenesCuentacuentos = getImagesFromFolder("cuentacuentos");
+const imagenesDebate = getImagesFromFolder("debate");
+const imagenesApoderado = getImagesFromFolder("apoderada");
+const imagenesMates = getImagesFromFolder("matematicas");
+const imagenesLudoteca = getImagesFromFolder("ludoteca");
+const imagenesLaboratorio = getImagesFromFolder("laboratorio");
+const imagenesLimpiapies = getImagesFromFolder("limpiapies");
 
 // =========================================================================
 // 3. ESTRUCTURA DE DATOS PRINCIPAL DE LA BIBLIOTECA CRA
@@ -72,31 +42,37 @@ export const craData = {
     {
       title: "Inauguración de nuestro nuevo Laboratorio Creativo",
       excerpt: "Un espacio innovador equipado con computadores de alto estándar que permitirá fortalecer el aprendizaje, la creatividad y la investigación.",
-      image: laboratorio1,
+      image: imagenesLaboratorio[2],
+      href: ""
+    },
+    {
+      title: "Estudiantes de 3° Básico logran importante mejora para su sala gracias al trabajo en equipo",
+      excerpt: "Los estudiantes de 3° Básico, junto a su profesora jefe Carolina Castillo, lideraron un proyecto colaborativo para adquirir un limpia pies para su sala.",
+      image: imagenesLimpiapies[3],
       href: ""
     },
     {
       title: "Jornada de cuentacuentos en biblioteca",
       excerpt: "Docentes interpretaron el relato El almohadón de plumas en una puesta en escena expresiva.",
-      image: cuentos1,
+      image: imagenesCuentacuentos[0],
       href: ""
     },
     {
       title: "Jornada de debate y conversatorio",
       excerpt: "Estudiantes participaron activamente exponiendo ideas y argumentando con respeto.",
-      image: debate1,
+      image: imagenesDebate[0],
       href: ""
     },
     {
       title: "Semana de la Matemática",
       excerpt: "Estudiantes participaron en juegos matemáticos lúdicos organizados en estaciones.",
-      image: mates1,
+      image: imagenesMates[0],
       href: ""
     },
     {
       title: "Día de Ludoteca escolar",
       excerpt: "Habilidades de lectoescritura fortalecidas a través de dinámicas lúdicas y colaborativas.",
-      image: ludoteca1,
+      image: imagenesLudoteca[0],
       href: ""
     }
   ],
@@ -110,6 +86,14 @@ export const craData = {
       description: '¡Hoy vivimos un hito para nuestra comunidad educativa!<br/><br/>Inauguramos oficialmente nuestro nuevo <strong class="text-primary">Laboratorio Creativo</strong>, un espacio innovador equipado con <strong class="text-primary">computadores de alto estándar</strong> que permitirá fortalecer el aprendizaje, la creatividad, la investigación y el desarrollo de habilidades esenciales para el futuro.<br/><br/>Esta significativa ceremonia fue liderada por nuestro <strong class="text-primary">Centro General de Estudiantes</strong>, acompañado por una comisión representativa de cada curso desde 6° Básico hasta IV° Medio, reafirmando el importante rol que tienen nuestros estudiantes en la construcción de una comunidad participativa y comprometida.<br/><br/>Uno de los aspectos más especiales de este proyecto fue que el nombre "Laboratorio Creativo" fue elegido por los propios estudiantes a través de un concurso en el que participaron jóvenes desde 7° Básico hasta IV° Medio, permitiéndoles ser protagonistas de este nuevo espacio desde sus inicios.<br/><br/>Creemos que educar también significa generar oportunidades para crear, innovar y soñar. Hoy no solo inauguramos una sala equipada con tecnología de calidad; inauguramos un lugar donde surgirán nuevas ideas, proyectos, aprendizajes y desafíos que prepararán a nuestros estudiantes para el mundo que les espera.<br/><br/>💡💻 Gracias a todos quienes hicieron posible este importante avance. ¡Sigamos construyendo juntos una educación que inspire, motive y transforme vidas!',
       images: imagenesLaboratorio,
       altPrefix: "Laboratorio Creativo"
+    },
+    {
+      category: "Noticia CRA",
+      date: "30/06/2026 • Comunidad",
+      title: "Estudiantes de 3° Básico logran importante mejora para su sala gracias al trabajo en equipo",
+      description: 'Los estudiantes de 3° Básico, junto a su profesora jefe, Carolina Castillo, llevaron adelante un proyecto colaborativo para adquirir un limpia pies para su sala de clases, respondiendo a una necesidad detectada por el propio curso.<br/><br/>La directiva, integrada por Sofía Morales (presidenta), Alonso Campos (tesorero) y Xavier Moreno (secretario), organizó a sus compañeros para reunir los fondos necesarios. Gracias al compromiso, esfuerzo y colaboración de las familias, lograron alcanzar la meta propuesta.<br/><br/>Como resultado de este trabajo conjunto, la estudiante Sofía, con apoyo de su familia, realizó la compra del limpia pies, contribuyendo a mantener un espacio más limpio y ordenado para toda la comunidad del curso.<br/><br/>Esta iniciativa destaca el valor del trabajo en equipo, la organización y la participación activa de los estudiantes y sus familias en el mejoramiento de su entorno escolar.',
+      images: imagenesLimpiapies,
+      altPrefix: "Trabajo en equipo 3 Basico"
     },
     {
       category: "Noticia CRA",
